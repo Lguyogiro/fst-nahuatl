@@ -1,0 +1,140 @@
+Multichar_Symbols
+%<Pos%>
+%<N%>
+%<Abs%>
+%<Pl%>
+%<Poss1Sg%>
+%<Poss2Sg%>
+%<Poss3Sg%>
+%<Poss3Pl%>
+%<Poss2Pl%>
+%<Poss1Pl%>
+%<Dim%>
+%<Dim1%>
+%<Dim2%>
+@U.pos.ON@
+@U.pos.1SG@
+@U.pos.2SG@
+@U.pos.3SG@
+@U.pos.OFF@
+@U.suff.tl@
+@U.suff.tli@
+@U.suff.li@
+@U.suff.other@
+@C.suff@
+
+LEXICON Root
+NominalNuclearClause ;
+
+LEXICON NominalNuclearClause
+NominalStem ;
+
+LEXICON NominalStem
+@U.pos.OFF@:@U.pos.OFF@0 Stem ;
+Poss ;
+
+
+LEXICON Poss
+@U.pos.ON@%<Poss1Sg%>:@U.pos.ON@no^ Stem ;
+@U.pos.ON@%<Poss2Sg%>:@U.pos.ON@mo^ Stem ;
+@U.pos.ON@%<Poss3Sg%>:@U.pos.ON@i^ Stem ;
+@U.pos.ON@%<Poss1Pl%>:@U.pos.ON@to^ Stem ;
+
+!
+!In San Miguel Tenango, the 2nd person plural possessive prefix is "namo-",
+! whereas in Omitlan, it appears to be "nimo-".
+!
+@U.pos.ON@%<omitlan%>%<Poss2Pl%>:@U.pos.ON@nimo^ Stem ;
+@U.pos.ON@%<tenango%>%<Poss2Pl%>:@U.pos.ON@namo^ Stem ;
+
+@U.pos.ON@%<Poss3Pl%>:@U.pos.ON@im^ Stem ;
+
+
+LEXICON Stem
+@U.suff.tl@:@U.suff.tl@0 TlStem ;
+@U.suff.tli@:@U.suff.tli@0 TliStem ;
+@U.suff.li@:@U.suff.li@0 LiStem ;
+@U.suff.other@:@U.suff.other@0 OtherStem ;
+
+
+LEXICON LiStem
+calli:cal Suff ;
+citlalli:citlal Suff ;
+
+
+LEXICON TlStem
+amatl:ama Suff ;                       !"papel/libro"
+ciuatl:cihua Suff ;                    !"woman"
+oquichtl:oquich Suff ;                 !"male"
+tlacatl:tlaca Suff ;                   !"man"
+tototl:toto Suff ;                     !"pajaro"
+ihuitl:ihui Suff ;                     !"gallina"
+tipetl:tipe Suff ;                     !"cerro"
+cacalotl:cacalo Suff ;                 !"cuervo"
+tapalcatihuilotl:tapalcatihuilo Suff ; !"contenedor de agua"
+tiquitl:tiqui Suff ;                   !"trabajo"
+tlaltitl:tlalti Suff ;                 !"earth rock"
+atl:a Suff ;                           !"agua"
+nacatl:naca Suff ;                     !"carne"
+ichcatl:ichca Suff ;                   !"borrego"
+tipostl:tipos Suff ;                   !"carro/algo metalico"
+yolotl:yolo Suff ;                     !"corazon"
+conetl:cone Suff ;                     !"bebe"
+cosamalotl:cosamalo Suff ;             !"arcoiris"
+ichpocaconetl:ichpocacone Suff ;       !"girl baby"
+quichconetl:quichcone Suff ;           !"male baby"
+coyotl:coyo Suff ;                     !"coyote"
+
+
+
+
+! todo: Figure out how to deal with these slightly different forms.
+xihuitl:xiW Suff ;                    !"hierba/year" (noxiuh)
+!caxitl: cax Suff ;                    !"plato"       (nocax, caxme)
+
+
+LEXICON OtherStem
+tempil:tempil Suff ;           !"pico"
+mahtlapal:mahtlapal Suff ;     !"ala"
+tonal:tonal Suff ;             !"day/sun"
+caxtil:caxtil Suff ;           !"gallina"
+patox:patox Suff ;             !"pato"
+ixtololo:ixtololo Suff ;       !"ojo"
+tlapitlanil:tlapitlanil Suff ; !"rayo"
+
+
+
+LEXICON TliStem
+tochtli:toch Suff;        !"conejo"
+itzcuintli:itzcuin Suff;  !"perro"
+pahtli:pah Suff;          !"medicina"
+poctli:poc Suff;          !"humo"
+metztli:metz Suff;        !"luna"
+mixtli:mix Suff           !"nube
+
+LEXICON Suff
+0:0 Ending ;
+!@C.suff@%#:@C.suff@0 Stem ;
+
+LEXICON Ending
+! Singulars
+@U.suff.other@@U.pos.OFF@%<N%>%<Abs%>:@U.suff.other@@U.pos.OFF@^0 # ;
+@U.suff.li@@U.pos.OFF@%<N%>%<Abs%>:@U.suff.li@@U.pos.OFF@^li # ;
+@U.suff.tl@@U.pos.OFF@%<N%>%<Abs%>:@U.suff.tl@@U.pos.OFF@^tl # ;
+@U.suff.tli@@U.pos.OFF@%<N%>%<Abs%>:@U.suff.tli@@U.pos.OFF@^tli # ;
+
+! Plurals
+@U.suff.li@@U.pos.OFF@%<N%>%<Pl%>:@U.suff.li@@U.pos.OFF@^ime # ;
+@U.suff.other@@U.pos.OFF@%<N%>%<Pl%>:@U.suff.other@@U.pos.OFF@^me # ;
+@U.suff.tl@@U.pos.OFF@%<N%>%<Pl%>:@U.suff.tl@@U.pos.OFF@^me # ;
+@U.suff.tli@@U.pos.OFF@%<N%>%<Pl%>:@U.suff.tli@@U.pos.OFF@^me # ;
+
+! Possessed endings
+@U.pos.ON@%<N%>:@U.pos.ON@^0 # ;
+@U.pos.ON@%<N%>%<Pl%>:@U.pos.ON@^huan # ;
+
+
+! Diminutive Suffixes
+%<N%>%<Dim1%>:^tzin # ;
+%<N%>%<Dim2%>:^tzintli # ;
+%<N%>%<Pl%>%<Dim%>:^tzitzin # ;

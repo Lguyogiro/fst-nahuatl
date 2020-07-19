@@ -1,0 +1,122 @@
+Multichar_Symbols
+%<1SgSubj%>
+%<1PlSubj%>
+%<2SgSubj%>
+%<2PlSubj%>
+%<3SgSubj%>
+%<3PlSubj%>
+%<1SgObj%>
+%<2SgObj%>
+%<3SgObj%>
+%<1PlObj%>
+%<2PlObj%>
+%<3PlObj%>
+%<Hon%>
+%<Refl%>
+%<Pres%>
+%<Pret%>
+%<Fut%>
+@U.PlSubj.ON@
+@U.PlSubj.OFF@
+@U.Past.ON@
+@U.Past.OFF@
+@U.Trans.ON@
+@U.Trans.OFF@
+@P.2ndPersAddr.ON@
+@R.2ndPersAddr.ON@
+@D.2ndPersAddr.ON@
+@P.Reflexive.ON@
+@R.Reflexive@
+@P.Hon.ON@
+
+
+LEXICON Root
+VerbalNuclearClause ;
+
+LEXICON VerbalNuclearClause
+@U.Past.ON@:@U.Past.ON@o^ SubjectPrefixes ;
+@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
+
+LEXICON SubjectPrefixes
+%<1SgSubj%>@U.PlSubj.OFF@:@U.PlSubj.OFF@n^ ObjectPrefixes ;
+%<2SgSubj%>@U.PlSubj.OFF@@P.2ndPersAddr.ON@:@U.PlSubj.OFF@@P.2ndPersAddr.ON@t^ ObjectPrefixes ;
+%<3SgSubj%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0^ ObjectPrefixes ;
+%<1PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@t^ ObjectPrefixes ;
+%<2PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@n^ ObjectPrefixes ;
+%<3PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@0^ ObjectPrefixes ;
+
+LEXICON ObjectPrefixes
+! No object prefix for intransitive verbs
+@U.Trans.OFF@:@U.Trans.OFF@0 Honorific ;
+
+@U.Trans.ON@%<1SgObj%>:@U.Trans.ON@nech^ Honorific ;
+@U.Trans.ON@@P.2ndPersAddr.ON@%<2SgObj%>:@U.Trans.ON@@P.2ndPersAddr.ON@mitz^ Honorific ;
+@U.Trans.ON@%<3SgObj%>:@U.Trans.ON@K^ Honorific ;
+@U.Trans.ON@%<1PlObj%>:@U.Trans.ON@tech^ Honorific ;
+@U.Trans.ON@%<2PlObj%>:@U.Trans.ON@mech^ Honorific ;
+@U.Trans.ON@%<3PlObj%>:@U.Trans.ON@quim^ Honorific ;
+
+@U.Trans.ON@%<GenObjThing%>:@U.Trans.ON@tla^ Honorific ;
+@U.Trans.ON@%<GenObjPerson%>:@U.Trans.ON@te^ Honorific ;
+
+
+LEXICON Honorific
+@R.2ndPersAddr.ON@@P.Hon.ON@%<Hon%>:@R.2ndPersAddr.ON@@P.Hon.ON@on^ Reflexive ;
+! Reflexive ;
+
+
+LEXICON Reflexive
+!
+! Not every verb can be reflexive, so maybe roll the reflexive prefix into the
+! verb stem lexical entry?
+!
+! %<Refl%>@P.Reflexive.ON@:@P.Reflexive.ON@mo^ VerbBase ;
+
+VerbBase ;
+
+
+LEXICON VerbBase
+@U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase1 ;
+@U.Trans.OFF@@U.Past.ON@:@U.Trans.OFF@@U.Past.ON@ IntransitiveBase2 ;
+@U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase1 ;
+
+LEXICON IntransitiveBase1
+!
+! Used for forming the simple present tense.
+!
+cochi:cochi^ Base1Suffix ;  !"dormir"
+choca:choca^ Base1Suffix ;  !"llorar"
+pano:pano^ Base1Suffix ;    !"pasar"
+quiza:quiza^ Base1Suffix ;  !"salir"
+
+
+LEXICON IntransitiveBase2
+!
+! Used to form the preterite.
+!
+cochi:coch^ Base2Suffix ;   !"dormir"
+choca:choca^ Base2Suffix ;  !"llorar"
+pano:pano^ Base2Suffix ;    !"pasar"
+quiza:quiz^ Base1Suffix ;   !"salir"
+
+
+LEXICON TransitiveBase1
+!
+! Used for forming the simple present tense.
+!
+itta:itta^ Base1Suffix ;   !"ver"
+caqui:caqui^ Base1Suffix ; !"escuchar"
+notza:notza^ Base1Suffix ; !"llamar"
+
+LEXICON Base1Suffix
+%<Pres%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0 # ;
+%<Pres%>@U.PlSubj.ON@:@U.PlSubj.ON@PL # ;
+
+LEXICON Base2Suffix
+%<Pret%>@U.PlSubj.OFF@@U.Past.ON@:@U.PlSubj.OFF@@U.Past.ON@K # ;
+%<Pret%>@U.PlSubj.ON@@U.Past.ON@:@U.PlSubj.ON@@U.Past.ON@que # ;
+
+
+LEXICON Base3Suffix
+!%<Fut%>@U.PlSubj.OFF@:@U.PlSubj.OFF@s # ;
+!%<Fut%>@U.PlSubj.ON@:@U.PlSubj.ON@sque # ;
