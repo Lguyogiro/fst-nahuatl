@@ -62,7 +62,7 @@ LEXICON ObjectPrefixes
 
 LEXICON Honorific
 @R.2ndPersAddr.ON@@P.Hon.ON@%<Hon%>:@R.2ndPersAddr.ON@@P.Hon.ON@on^ Reflexive ;
-! Reflexive ;
+Reflexive ;
 
 
 LEXICON Reflexive
@@ -78,7 +78,9 @@ VerbBase ;
 LEXICON VerbBase
 @U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase1 ;
 @U.Trans.OFF@@U.Past.ON@:@U.Trans.OFF@@U.Past.ON@ IntransitiveBase2 ;
+
 @U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase1 ;
+
 
 LEXICON IntransitiveBase1
 !
@@ -107,6 +109,13 @@ LEXICON TransitiveBase1
 itta:itta^ Base1Suffix ;   !"ver"
 caqui:caqui^ Base1Suffix ; !"escuchar"
 notza:notza^ Base1Suffix ; !"llamar"
+ihtoa:ihtoa^ Base1Suffix ; !"decir"
+
+LEXICON TransitiveBase2
+itta:itta^ Base1Suffix ;   !"ver"
+caqui:cac^ Base1Suffix ; !"escuchar"
+notza:notz^ Base1Suffix ; !"llamar"
+ihtoa:ihtoh^ Base1Suffix ; !"decir"
 
 LEXICON Base1Suffix
 %<Pres%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0 # ;
@@ -118,5 +127,5 @@ LEXICON Base2Suffix
 
 
 LEXICON Base3Suffix
-!%<Fut%>@U.PlSubj.OFF@:@U.PlSubj.OFF@s # ;
-!%<Fut%>@U.PlSubj.ON@:@U.PlSubj.ON@sque # ;
+!%<Fut%>@U.PlSubj.OFF@:@U.PlSubj.OFF@z # ;
+!%<Fut%>@U.PlSubj.ON@:@U.PlSubj.ON@zque # ;
