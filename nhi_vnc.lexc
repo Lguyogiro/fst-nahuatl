@@ -35,7 +35,7 @@ VerbalNuclearClause ;
 
 LEXICON VerbalNuclearClause
 @U.Past.ON@:@U.Past.ON@o^ SubjectPrefixes ;
-@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
+!@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
 
 LEXICON SubjectPrefixes
 %<1SgSubj%>@U.PlSubj.OFF@:@U.PlSubj.OFF@n^ ObjectPrefixes ;
@@ -78,44 +78,46 @@ VerbBase ;
 LEXICON VerbBase
 @U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase1 ;
 @U.Trans.OFF@@U.Past.ON@:@U.Trans.OFF@@U.Past.ON@ IntransitiveBase2 ;
-
 @U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase1 ;
+@U.Trans.ON@@U.Past.ON@:@U.Trans.ON@@U.Past.ON@ TransitiveBase2 ;
 
 
 LEXICON IntransitiveBase1
 !
 ! Used for forming the simple present tense.
 !
-cochi:cochi^ Base1Suffix ;  !"dormir"
-choca:choca^ Base1Suffix ;  !"llorar"
-pano:pano^ Base1Suffix ;    !"pasar"
-quiza:quiza^ Base1Suffix ;  !"salir"
-
+cochi:cochi^ Base1Suffix ;               !"dormir"
+choca:choca^ Base1Suffix ;               !"llorar"
+pano:pano^ Base1Suffix ;                 !"pasar"
+quiza:quiza^ Base1Suffix ;               !"salir"
+%<Refl%>motlalia:motlalia^ Base1Suffix ; !"sentarse"
 
 LEXICON IntransitiveBase2
 !
 ! Used to form the preterite.
 !
-cochi:coch^ Base2Suffix ;   !"dormir"
-choca:choca^ Base2Suffix ;  !"llorar"
-pano:pano^ Base2Suffix ;    !"pasar"
-quiza:quiz^ Base1Suffix ;   !"salir"
-
+cochi:coch^ Base2Suffix ;                !"dormir"
+choca:choca^ Base2Suffix ;               !"llorar"
+pano:pano^ Base2Suffix ;                 !"pasar"
+quiza:quiz^ Base1Suffix ;                !"salir"
+%<Refl%>motlalia:motlalih^ Base2Suffix ; !"sentarse"
 
 LEXICON TransitiveBase1
 !
 ! Used for forming the simple present tense.
 !
-itta:itta^ Base1Suffix ;   !"ver"
-caqui:caqui^ Base1Suffix ; !"escuchar"
-notza:notza^ Base1Suffix ; !"llamar"
-ihtoa:ihtoa^ Base1Suffix ; !"decir"
+itta:itta^ Base1Suffix ;     !"ver"
+caqui:kaki^ Base1Suffix ;    !"escuchar"
+notza:notza^ Base1Suffix ;   !"llamar"
+ihtoa:ihtoa^ Base1Suffix ;   !"decir"
+tlalia:tlalia^ Base1Suffix ; !"poner"
 
 LEXICON TransitiveBase2
-itta:itta^ Base1Suffix ;   !"ver"
-caqui:cac^ Base1Suffix ; !"escuchar"
-notza:notz^ Base1Suffix ; !"llamar"
-ihtoa:ihtoh^ Base1Suffix ; !"decir"
+itta:itta^ Base2Suffix ;     !"ver"
+caqui:KaK^ Base2Suffix ;     !"escuchar"
+notza:notz^ Base2Suffix ;    !"llamar"
+ihtoa:ihtoh^ Base2Suffix ;   !"decir"
+tlalia:tlalih^ Base2Suffix ; !"sentarse"
 
 LEXICON Base1Suffix
 %<Pres%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0 # ;
@@ -123,7 +125,7 @@ LEXICON Base1Suffix
 
 LEXICON Base2Suffix
 %<Pret%>@U.PlSubj.OFF@@U.Past.ON@:@U.PlSubj.OFF@@U.Past.ON@K # ;
-%<Pret%>@U.PlSubj.ON@@U.Past.ON@:@U.PlSubj.ON@@U.Past.ON@que # ;
+!%<Pret%>@U.PlSubj.ON@@U.Past.ON@:@U.PlSubj.ON@@U.Past.ON@Ke # ;
 
 
 LEXICON Base3Suffix

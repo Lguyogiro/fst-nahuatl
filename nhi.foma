@@ -21,20 +21,25 @@ define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
 
 !
 ! VNC Rules
-! @U.Past.OFF@@U.PlSubj.OFF@@U.Trans.ON@c@U.Trans.ON@@U.Past.OFF@caqui
+!
 define SubjIEpenthesis n -> n i, t -> t i || [ "@U.PlSubj.ON@" | "@U.PlSubj.OFF@" | "@P.2ndPersAddr.ON@" ] _ "^" AllFlagDiacritics* [Cons|K] ;
-define ObjIEpenthesis K -> Ki || [ AllFlagDiacritics* | .#. ] _ "^" AllFlagDiacritics* [Cons] ;
+define ObjIEpenthesis K -> K i || [ .#. | Cons ] AllFlagDiacritics* _ "^" AllFlagDiacritics* Cons ;
 define HonorificVowelHarmony i -> o || [n|t] _  "^" AllFlagDiacritics* "@P.Hon.ON@" o n ;
 define ODegemination o -> 0 || o "^" [ AllFlagDiacritics | FlagMarkers ]* _ n ;
+define KDegemination1 K -> 0 || [K|c|q] [ AllFlagDiacritics | FlagMarkers | "^" ]* _ ;
+define KDegemination2 K -> 0 || _ [ AllFlagDiacritics | FlagMarkers | "^" ]* [K|c|q] ;
 define StoZRewrite s -> z || _ AllFlagDiacritics* [ Cons | a | o | .#. ] ;
 define StoCRewrite s -> c ;
 define PluralEndingPt1 P L -> h || a "^" AllFlagDiacritics* _ .#.;
 define PluralEndingPt2 P L -> h u a || o "^" AllFlagDiacritics* _ .#.;
 define PluralEndingPt3 i -> e || _ "^" AllFlagDiacritics* P L .#.;
 define PluralEndingPt4 P L -> 0 || _ .#.;
+
+define NasalAssimilation m -> n || _ "^" AllFlagDiacritics* [K|t|n] ;
 define KElision K -> 0 || Cons "^" AllFlagDiacritics* _ .#. ;
-define KtoQui K -> q u || _  ("^") AllFlagDiacritics* i ;
+define KtoQui K -> q u || _  ("^") AllFlagDiacritics* [i|e] ;
 define KtoC K -> c ;
+define IhToEPreterite i h -> e || _ "^" AllFlagDiacritics* .#. ;
 define Cleanup "^" -> 0 ;
 
 read lexc nhi_vnc.lexc
@@ -45,12 +50,16 @@ define Grammar Lexicon                      .o.
                ObjIEpenthesis               .o.
                HonorificVowelHarmony        .o.
                ODegemination                .o.
+               KDegemination1               .o.
+               KDegemination2               .o.
                StoZRewrite                  .o.
                PluralEndingPt1              .o.
                PluralEndingPt2              .o.
                PluralEndingPt3              .o.
                PluralEndingPt4              .o.
+               NasalAssimilation            .o.
                KElision                     .o.
+               IhToEPreterite               .o.
                KtoQui                       .o.
                KtoC                         .o.
                Cleanup ;
