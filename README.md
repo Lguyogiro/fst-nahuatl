@@ -23,3 +23,14 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 - [ ] Subject prefixes ('n-', 't-', etc)
 
 #### VNCs
+- [x] Standard Subject Prefixes
+- [x] Object Prefixes
+- [ ] Tenango stress-sensitive Subject/Object Prefixes (e.g. "in-" instead of "ni-")
+- [ ] Alternative nhi subj prefix ('se-')
+- [x] Present for some stems
+- [x] Preterite for some stems
+- [ ] Future
+- [ ] Imperfect
+- [ ] Optative
+- [ ] Passive
+- [ ] Noun Object incorporation
