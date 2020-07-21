@@ -37,10 +37,13 @@ define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
 !
 ! VNC Rules
 !
-! before: ["@U.Past.OFF@" | "@U.PlSubj.ON@" | "@U.Optative.ON@" ]*
+!
 define SubjIEpenthesis n -> n i, t -> t i, x -> x i || "@P.SubjPref.ON@" _ "^" [ AllFlagDiacritics | FlagMarkers ]* [Cons|K] ;
 define ObjIEpenthesis K -> K i || [ .#. | Cons ] [AllFlagDiacritics | FlagMarkers | "^"]*  _ "^" [ AllFlagDiacritics | FlagMarkers ]* Cons ;
-define HonorificVowelHarmony i -> o || [n|t] _  "^" [AllFlagDiacritics | "@P.SubjPref.ON@" | "@P.ObjPref.ON@" ]* "@P.Hon.ON@" o n ;
+
+define HonorificVowelHarmonyPt1 i -> o || m _ t z [AllFlagDiacritics|"^"]* "@P.Hon.ON@" o n ;
+define HonorificVowelHarmonyPt2 i -> o || K _ (m) [AllFlagDiacritics|"^"]* "@P.Hon.ON@" o n ;
+define HonorificVowelHarmonyPt3 i -> o || [n | t | x] _ [ AllFlagDiacritics|"^" | m o t z | K o m | K | "@P.SubjPref.ON@" | "@P.ObjPref.ON@" ]* "@P.Hon.ON@" o n ;
 
 define ODegemination o -> 0 || o "^" [ AllFlagDiacritics | FlagMarkers ]* _ n ;
 define KDegemination1 K -> 0 || [K|c|q] [ AllFlagDiacritics | FlagMarkers | "^" ]* _ ;
@@ -70,7 +73,9 @@ define Lexicon;
 define Grammar Lexicon                      .o.
                SubjIEpenthesis              .o.
                ObjIEpenthesis               .o.
-               HonorificVowelHarmony        .o.
+               HonorificVowelHarmonyPt1     .o.
+               HonorificVowelHarmonyPt2     .o.
+               HonorificVowelHarmonyPt3     .o.
                ODegemination                .o.
                KDegemination1               .o.
                KDegemination2               .o.

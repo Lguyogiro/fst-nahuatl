@@ -5,7 +5,7 @@ This dialect has some significant internal variation which I will also try to
 capture eventually. For now, the models are built to most closely resemble the 
 Nahuatl of Omitlán, Tepetzintla.
 
-The primary deliverables of this project are:
+The planned deliverables of this project are:
 1. Morphological analyzer/accepter
 2. Spell Checker (uses the morphological accepter from 1)
 3. Orthographical Normalization (already implemented in pure Python in a different repo).
@@ -37,9 +37,9 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 #### VNCs
 - [x] Standard Subject Prefixes
 - [x] Object Prefixes
-- [ ] Prefix honorific vowel harmony
+- [x] Prefix honorific vowel harmony
 - [ ] Tenango stress-sensitive Subject/Object Prefixes (e.g. "in-" instead of "ni-")
-- [ ] Alternative nhi subj prefix ('se-')
+- [x] Alternative nhi subj prefix ('se-')
 - [x] Present for some stems
 - [x] Preterite for some stems
 - [ ] Future
@@ -48,3 +48,4 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 - [ ] Passive
 - [ ] Noun Object incorporation
 - [ ] Subject/Object person-number restrictions
+- [ ] Other valence/predicate-argument restrictions (e.g. *tinechmati *"You know me")
