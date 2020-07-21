@@ -36,13 +36,14 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 #### VNCs
 - [x] Standard Subject Prefixes
 - [x] Object Prefixes
-- [ ] Prefix honrific vowel harmony
+- [ ] Prefix honorific vowel harmony
 - [ ] Tenango stress-sensitive Subject/Object Prefixes (e.g. "in-" instead of "ni-")
 - [ ] Alternative nhi subj prefix ('se-')
 - [x] Present for some stems
 - [x] Preterite for some stems
 - [ ] Future
 - [ ] Imperfect
-- [ ] Optative
+- [x] Optative
 - [ ] Passive
 - [ ] Noun Object incorporation
+- [ ] Subject/Object person-number restrictions

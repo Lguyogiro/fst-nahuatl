@@ -16,6 +16,7 @@ Multichar_Symbols
 %<Pres%>
 %<Pret%>
 %<Fut%>
+%<Opt%>
 @U.PlSubj.ON@
 @U.PlSubj.OFF@
 @U.Past.ON@
@@ -27,6 +28,15 @@ Multichar_Symbols
 @D.2ndPersAddr.ON@
 @P.Reflexive.ON@
 @R.Reflexive@
+@D.Past.ON@
+@U.Optative.ON@
+@D.Optative.ON@
+
+!
+! Flag Diacritics used to mark morpheme types.
+!
+@P.SubjPref.ON@
+@P.ObjPref.ON@
 @P.Hon.ON@
 
 
@@ -35,29 +45,32 @@ VerbalNuclearClause ;
 
 LEXICON VerbalNuclearClause
 @U.Past.ON@:@U.Past.ON@o^ SubjectPrefixes ;
-!@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
+@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
 
 LEXICON SubjectPrefixes
-%<1SgSubj%>@U.PlSubj.OFF@:@U.PlSubj.OFF@n^ ObjectPrefixes ;
-%<2SgSubj%>@U.PlSubj.OFF@@P.2ndPersAddr.ON@:@U.PlSubj.OFF@@P.2ndPersAddr.ON@t^ ObjectPrefixes ;
-%<3SgSubj%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0^ ObjectPrefixes ;
-%<1PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@t^ ObjectPrefixes ;
-%<2PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@n^ ObjectPrefixes ;
-%<3PlSubj%>@U.PlSubj.ON@:@U.PlSubj.ON@0^ ObjectPrefixes ;
+%<1SgSubj%>@U.PlSubj.OFF@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.SubjPref.ON@n^ ObjectPrefixes ;
+%<2SgSubj%>@U.PlSubj.OFF@@P.2ndPersAddr.ON@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.2ndPersAddr.ON@@P.SubjPref.ON@t^ ObjectPrefixes ;
+%<3SgSubj%>@U.PlSubj.OFF@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.SubjPref.ON@0^ ObjectPrefixes ;
+%<1PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@t^ ObjectPrefixes ;
+%<2PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@n^ ObjectPrefixes ;
+%<3PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@0^ ObjectPrefixes ;
+%<Opt%>@U.Past.OFF@@U.PlSubj.ON@@U.Optative.ON@@P.SubjPref.ON@:@U.Past.OFF@@U.PlSubj.ON@@U.Optative.ON@@P.SubjPref.ON@x^ ObjectPrefixes ;
+%<Opt%>@U.Past.OFF@@U.PlSubj.OFF@@U.Optative.ON@@P.SubjPref.ON@:@U.Past.OFF@@U.PlSubj.OFF@@U.Optative.ON@@P.SubjPref.ON@x^ ObjectPrefixes ;
+
 
 LEXICON ObjectPrefixes
 ! No object prefix for intransitive verbs
-@U.Trans.OFF@:@U.Trans.OFF@0 Honorific ;
+@U.Trans.OFF@@P.ObjPref.ON@:@U.Trans.OFF@@P.ObjPref.ON@0 Honorific ;
 
-@U.Trans.ON@%<1SgObj%>:@U.Trans.ON@nech^ Honorific ;
-@U.Trans.ON@@P.2ndPersAddr.ON@%<2SgObj%>:@U.Trans.ON@@P.2ndPersAddr.ON@mitz^ Honorific ;
-@U.Trans.ON@%<3SgObj%>:@U.Trans.ON@K^ Honorific ;
-@U.Trans.ON@%<1PlObj%>:@U.Trans.ON@tech^ Honorific ;
-@U.Trans.ON@%<2PlObj%>:@U.Trans.ON@mech^ Honorific ;
-@U.Trans.ON@%<3PlObj%>:@U.Trans.ON@quim^ Honorific ;
+%<1SgObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@nech^ Honorific ;
+%<2SgObj%>@U.Trans.ON@@P.2ndPersAddr.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.2ndPersAddr.ON@@P.ObjPref.ON@mitz^ Honorific ;
+%<3SgObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@K^ Honorific ;
+%<1PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@tech^ Honorific ;
+%<2PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@mech^ Honorific ;
+%<3PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@quim^ Honorific ;
 
-@U.Trans.ON@%<GenObjThing%>:@U.Trans.ON@tla^ Honorific ;
-@U.Trans.ON@%<GenObjPerson%>:@U.Trans.ON@te^ Honorific ;
+%<GenObjThing%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@tla^ Honorific ;
+%<GenObjPerson%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@te^ Honorific ;
 
 
 LEXICON Honorific
@@ -76,10 +89,13 @@ VerbBase ;
 
 
 LEXICON VerbBase
-@U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase1 ;
-@U.Trans.OFF@@U.Past.ON@:@U.Trans.OFF@@U.Past.ON@ IntransitiveBase2 ;
-@U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase1 ;
-@U.Trans.ON@@U.Past.ON@:@U.Trans.ON@@U.Past.ON@ TransitiveBase2 ;
+@U.Trans.OFF@@U.Past.OFF@@D.Optative.ON@:@U.Trans.OFF@@U.Past.OFF@@D.Optative.ON@ IntransitiveBase1 ;
+@U.Trans.OFF@@U.Past.ON@@D.Optative.ON@:@U.Trans.OFF@@U.Past.ON@@D.Optative.ON@ IntransitiveBase2 ;
+@U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase3 ;
+
+@U.Trans.ON@@U.Past.OFF@@D.Optative.ON@:@U.Trans.ON@@U.Past.OFF@@D.Optative.ON@ TransitiveBase1 ;
+@U.Trans.ON@@U.Past.ON@@D.Optative.ON@:@U.Trans.ON@@U.Past.ON@@D.Optative.ON@ TransitiveBase2 ;
+@U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase3 ;
 
 
 LEXICON IntransitiveBase1
@@ -90,7 +106,7 @@ cochi:cochi^ Base1Suffix ;               !"dormir"
 choca:choca^ Base1Suffix ;               !"llorar"
 pano:pano^ Base1Suffix ;                 !"pasar"
 quiza:quiza^ Base1Suffix ;               !"salir"
-%<Refl%>motlalia:motlalia^ Base1Suffix ; !"sentarse"
+!%<Refl%>motlalia:motlalia^ Base1Suffix ; !"sentarse"
 
 LEXICON IntransitiveBase2
 !
@@ -107,7 +123,7 @@ LEXICON TransitiveBase1
 ! Used for forming the simple present tense.
 !
 itta:itta^ Base1Suffix ;     !"ver"
-caqui:kaki^ Base1Suffix ;    !"escuchar"
+caqui:KaKi^ Base1Suffix ;    !"escuchar"
 notza:notza^ Base1Suffix ;   !"llamar"
 ihtoa:ihtoa^ Base1Suffix ;   !"decir"
 tlalia:tlalia^ Base1Suffix ; !"poner"
@@ -119,15 +135,32 @@ notza:notz^ Base2Suffix ;    !"llamar"
 ihtoa:ihtoh^ Base2Suffix ;   !"decir"
 tlalia:tlalih^ Base2Suffix ; !"sentarse"
 
+LEXICON IntransitiveBase3
+cochi:cochi^ Base3Suffix ;               !"dormir"
+choca:choca^ Base3Suffix ;               !"llorar"
+pano:pano^ Base3Suffix ;                 !"pasar"
+quiza:quiza^ Base3Suffix ;               !"salir"
+%<Refl%>motlalia:motlali^ Base3Suffix ;  !"sentarse"
+
+LEXICON TransitiveBase3
+itta:itta^ Base3Suffix ;     !"ver"
+caqui:KaKi^ Base3Suffix ;    !"escuchar"
+notza:notza^ Base3Suffix ;   !"llamar"
+ihtoa:ihto^ Base3Suffix ;    !"decir"
+tlali:tlali^ Base3Suffix ;   !"poner"
+
+
 LEXICON Base1Suffix
-%<Pres%>@U.PlSubj.OFF@:@U.PlSubj.OFF@0 # ;
-%<Pres%>@U.PlSubj.ON@:@U.PlSubj.ON@PL # ;
+%<Pres%>@U.Past.OFF@@U.PlSubj.OFF@:@U.Past.OFF@@U.PlSubj.OFF@0 # ;
+%<Pres%>@U.Past.OFF@@U.PlSubj.ON@:@U.Past.OFF@@U.PlSubj.ON@PL # ;
 
 LEXICON Base2Suffix
 %<Pret%>@U.PlSubj.OFF@@U.Past.ON@:@U.PlSubj.OFF@@U.Past.ON@K # ;
 !%<Pret%>@U.PlSubj.ON@@U.Past.ON@:@U.PlSubj.ON@@U.Past.ON@Ke # ;
 
-
 LEXICON Base3Suffix
-!%<Fut%>@U.PlSubj.OFF@:@U.PlSubj.OFF@z # ;
-!%<Fut%>@U.PlSubj.ON@:@U.PlSubj.ON@zque # ;
+%<Fut%>@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@z # ;
+%<Fut%>@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@zque # ;
+%<Opt%>@U.PlSubj.OFF@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@U.Optative.ON@0 # ;
+%<Opt%>@U.PlSubj.ON@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@U.Optative.ON@Kan # ;
+
