@@ -31,6 +31,7 @@ Multichar_Symbols
 @D.Past.ON@
 @U.Optative.ON@
 @D.Optative.ON@
+@R.Optative.ON@
 
 !
 ! Flag Diacritics used to mark morpheme types.
@@ -161,6 +162,6 @@ LEXICON Base2Suffix
 LEXICON Base3Suffix
 %<Fut%>@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@z # ;
 %<Fut%>@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@zque # ;
-%<Opt%>@U.PlSubj.OFF@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@U.Optative.ON@0 # ;
-%<Opt%>@U.PlSubj.ON@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@U.Optative.ON@Kan # ;
+%<Opt%>@U.PlSubj.OFF@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@R.Optative.ON@0 # ;
+%<Opt%>@U.PlSubj.ON@@U.Past.OFF@@U.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@R.Optative.ON@Kan # ;
 
