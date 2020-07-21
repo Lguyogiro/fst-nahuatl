@@ -14,7 +14,8 @@ The primary deliverables of this project are:
 The following is a list of resources (grammars, books/transcripts, papers, etc) I am consulting for this project:
 * Tenango Nahuatl grammar: https://www.sil.org/system/files/reapdata/79/10/32/7910324529403884548589500092074462468/nhi_Grammar.pdf
 * OLAC Resource list: http://www.language-archives.org/language/nhi
-* Classical Nahuatl Grammar (where the "base1/base2/base3/etc" nomenclature comes from): https://www.worldcat.org/title/introduction-to-classical-nahuatl/oclc/705001680
+* Launey (2011) "Introduction to Classical Nahuatl" - Classical Nahuatl Grammar (this is where the "base1/base2/base3/etc" nomenclature comes from): https://www.worldcat.org/title/introduction-to-classical-nahuatl/oclc/705001680
+* Descriptive work on the Nahuatl of the Sierra Poblana: see Mitsuya...
 
 ## Todos
 
