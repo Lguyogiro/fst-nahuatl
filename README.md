@@ -42,8 +42,8 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 - [x] Alternative nhi subj prefix ('se-')
 - [x] Present for some stems
 - [x] Preterite for some stems
-- [ ] Future
-- [ ] Imperfect
+- [x] Future
+- [x] Imperfect
 - [x] Optative
 - [ ] Passive
 - [ ] Noun Object incorporation

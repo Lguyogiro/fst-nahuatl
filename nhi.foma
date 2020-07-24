@@ -1,35 +1,33 @@
-define Cons [b | c | c h | d | f | g | h | j | k | l | m | n | p | q | r | s | t | v | x | z ] ;
+define Cons [b | c | c h | d | f | g | h | j | k | l | m | n | p | q | r | s |
+             t | v | x | z | K] ;
 define Vowels [a | e | i | o | u ] ;
 
-define SuffixFlags ["@U.suff.li@" | "@U.suff.tli@" | "@U.suff.other@" | "@U.suff.tl@"] ;
-define PossFlags ["@U.pos.1SG@" | "@U.pos.2SG@" | "@U.pos.3SG@" | "@U.pos.ON@"] ;
 
-!
-! The FlagDiacritics are the flag diacritics used for long-distance agreement.
-!
-define AllFlagDiacritics ["@U.pos.1SG@" | "@U.pos.2SG@" | "@U.pos.3SG@" |
-                          "@U.pos.ON@" | "@U.pos.OFF@" | "@U.suff.li@" |
-                          "@U.suff.tli@" | "@U.suff.other@" | "@U.suff.tl@" |
-                          "@U.PlSubj.ON@" | "@U.PlSubj.OFF@" | "@U.Past.ON@" |
-                          "@U.Past.OFF@" | "@U.Trans.ON@" | "@U.Trans.OFF@" |
-                          "@P.2ndPersAddr.ON@" | "@R.2ndPersAddr.ON@" |
-                          "@D.2ndPersAddr.ON@" | "@P.Reflexive.ON@" |
-                          "@R.Reflexive@" | "@D.Optative.ON@" ] ;
+define NominalVerbalFlags ["@U.poss.ON@" | "@R.poss@" | "@D.poss@" |
+                           "@U.suff.tl@" | "@U.suff.tli@" | "@U.suff.li@" |
+                           "@U.suff.in@" | "@U.suff.other@" | "@C.suff@" |
+                           "@D.suff.li@" ] ;
+define SuffixFlags ["@U.suff.li@" | "@U.suff.tli@" | "@U.suff.other@" |
+                    "@U.suff.tl@"] ;
+define PossFlags [ "@U.poss.ON@" | "@R.poss" | "D.poss" ] ;
+define AllVerbalFlags ["@P.PST.ON@" | "@R.PST@" | "@D.PST@" | "@P.PLS.ON@" |
+                       "@R.PLS@" | "@D.PLS@" | "@P.INTR.ON@" | "@R.INTR@" |
+                       "@D.INTR@" | "@P.OPT.ON@" | "@R.OPT@" | "@D.OPT@" |
+                       "@P.2P.ON@" | "@R.2P@" | "@D.2P@" ] ;
+define AugmentSeq "@P.PST.ON@" o "^" ;
+define PreSubjFlags ["@P.PLS.ON@" | "@P.OPT.ON@" | "@P.2P.ON@"] ;
+define PreObjFlags ["@P.INTR.ON@" | "@P.2P.ON@"] ;
+define PreVerbalFlags ["@R.INTR@" | "@D.INTR@" | "@D.PST@" | "@R.PST@" |
+                       "@D.OPT@"] ;
 
-!
-! FlagMarkers are the flag diacritics used simply to mark morpheme types,
-! since certain phonological processes are easier to model as functions of
-! specific morphemes (and the honorific vowel harmony requires it).
-!
-define FlagMarkers ["@P.Hon.ON@"| "@P.SubjPref.ON@" | "@P.ObjPref.ON@"] ;
 
 !
 ! NNC Rules
 !
 define NasalAssimilation n -> 0 || _ SuffixFlags "@U.pos.OFF@" "^" m ;
 define DeleteIAfterReflexiveO i -> 0 || o "^" SuffixFlags _ Cons Cons ;
-define Nelision n -> 0 || _ "@U.pos.ON@" "^" h u a n ;
-define PossessiveNasalAssimilation m -> n || "@U.pos.ON@" i _ "^" SuffixFlags [c | t | n | s | y] ;
+define Nelision n -> 0 || _ "@R.poss@" "^" h u a n ;
+define PossessiveNasalAssimilation m -> n || "@U.poss.ON@" i _ "^" SuffixFlags [c | t | n | s | y] ;
 define PossVEnding a -> a u h, o -> o u h, i -> i u h, e -> e u h || _ PossFlags "^" 0 .#. ;
 define WrewritePt1 W -> u h  || _ AllFlagDiacritics*  "^" .#. ;
 define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
@@ -37,34 +35,21 @@ define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
 !
 ! VNC Rules
 !
-!
-define SubjIEpenthesis n -> n i, t -> t i, x -> x i || "@P.SubjPref.ON@" _ "^" [ AllFlagDiacritics | FlagMarkers ]* [Cons|K] ;
-define ObjIEpenthesis K -> K i || [ .#. | Cons ] [AllFlagDiacritics | FlagMarkers | "^"]*  _ "^" [ AllFlagDiacritics | FlagMarkers ]* Cons ;
-
-define HonorificVowelHarmonyPt1 i -> o || m _ t z [AllFlagDiacritics|"^"]* "@P.Hon.ON@" o n ;
-define HonorificVowelHarmonyPt2 i -> o || K _ (m) [AllFlagDiacritics|"^"]* "@P.Hon.ON@" o n ;
-define HonorificVowelHarmonyPt3 i -> o || [n | t | x] _ [ AllFlagDiacritics|"^" | m o t z | K o m | K | "@P.SubjPref.ON@" | "@P.ObjPref.ON@" ]* "@P.Hon.ON@" o n ;
-
-define ODegemination o -> 0 || o "^" [ AllFlagDiacritics | FlagMarkers ]* _ n ;
-define KDegemination1 K -> 0 || [K|c|q] [ AllFlagDiacritics | FlagMarkers | "^" ]* _ ;
-define KDegemination2 K -> 0 || _ [ AllFlagDiacritics | FlagMarkers | "^" ]* [K|c|q] ;
-
-define StoZRewrite s -> z || _ AllFlagDiacritics* [ Cons | a | o | .#. ] ;
+define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
+define ObjIEpenthesis K -> K i || [ .#. | Cons ] "^"* _ "^" PreVerbalFlags* Cons ;
+define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | i m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
+define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
+define StoZRewrite s -> z || _ AllVerbalFlags* [ Cons | a | o | .#. ] ;
 define StoCRewrite s -> c ;
-
-define PluralEndingPt1 P L -> h || a "^" AllFlagDiacritics* _ .#.;
-define PluralEndingPt2 P L -> h u a || o "^" AllFlagDiacritics* _ .#.;
-define PluralEndingPt3 i -> e || _ "^" AllFlagDiacritics* P L .#.;
-define PluralEndingPt4 P L -> 0 || _ .#.;
-
-define NasalAssimilation m -> n || _ "^" AllFlagDiacritics* [K|t|n] ;
-
-define KElision K -> 0 || Cons "^" AllFlagDiacritics* _ .#. ;
-define KtoQui K -> q u || _  ("^") AllFlagDiacritics* [i|e] ;
+define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+define PresPluralEndingAfterO P L -> h u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
+define PresPluralEnding P L -> 0 || _ .#.;
+define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
+define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
+define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
 define KtoC K -> c ;
-
-define IhToEPreterite i h -> e || _ "^" AllFlagDiacritics* .#. ;
-
+define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
 define Cleanup "^" -> 0 ;
 
 read lexc nhi_vnc.lexc
@@ -73,17 +58,14 @@ define Lexicon;
 define Grammar Lexicon                      .o.
                SubjIEpenthesis              .o.
                ObjIEpenthesis               .o.
-               HonorificVowelHarmonyPt1     .o.
-               HonorificVowelHarmonyPt2     .o.
-               HonorificVowelHarmonyPt3     .o.
-               ODegemination                .o.
-               KDegemination1               .o.
-               KDegemination2               .o.
+               HonorificVowelHarmony        .o.
+               KDegemination                .o.
                StoZRewrite                  .o.
-               PluralEndingPt1              .o.
-               PluralEndingPt2              .o.
-               PluralEndingPt3              .o.
-               PluralEndingPt4              .o.
+               StoCRewrite                  .o.
+               PresPluralEndingAfterA       .o.
+               PresPluralEndingAfterO       .o.
+               PresPluralEndingAfterE       .o.
+               PresPluralEnding             .o.
                NasalAssimilation            .o.
                KElision                     .o.
                IhToEPreterite               .o.
@@ -95,6 +77,8 @@ define Grammar Lexicon                      .o.
 !
 ! The following rule sequence is used for NNCs
 !
+!read lexc nhi_nnc.lexc
+!define Lexicon;
 !define Grammar Lexicon                     .o.
 !               DeleteIAfterReflexiveO      .o.
 !               NasalAssimilation           .o.

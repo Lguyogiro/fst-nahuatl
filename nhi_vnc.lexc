@@ -17,159 +17,189 @@ Multichar_Symbols
 %<Pret%>
 %<Fut%>
 %<Opt%>
-@U.PlSubj.ON@
-@U.PlSubj.OFF@
-@U.Past.ON@
-@U.Past.OFF@
-@U.Trans.ON@
-@U.Trans.OFF@
-@P.2ndPersAddr.ON@
-@R.2ndPersAddr.ON@
-@D.2ndPersAddr.ON@
-@P.Reflexive.ON@
-@R.Reflexive@
-@D.Past.ON@
-@U.Optative.ON@
-@D.Optative.ON@
-@R.Optative.ON@
 
-!
-! Flag Diacritics used to mark morpheme types.
-!
-@P.SubjPref.ON@
-@P.ObjPref.ON@
-@P.Hon.ON@
-
+! Flag Diacritics
+@P.PST.ON@  !Past (indicates that the augment 'o-' was used)
+@R.PST@     !Require Past
+@D.PST@     !Prohibit Past
+@P.PLS.ON@  !Plural Subject
+@R.PLS@     !Require Plural Subject
+@D.PLS@     !Prohibit Plural Subject
+@P.INTR.ON@ !Intranstive Verb
+@R.INTR@    !Require Intransitive Verb
+@D.INTR@    !Prohibit Intransitive Verb
+@P.OPT.ON@  !Optative (indicates that 'xi-' subject was used)
+@R.OPT@     !Require Optative
+@D.OPT@     !Prohibit Optative
+@P.2P.ON@   !Second Person subj or obj (for proper usage of the honorific)
+@R.2P@      !Require 2nd Person subj or obj
+@P.OINC.ON@ !Verb uses Noun object incorporation.
+@R.OINC@
+@D.OINC@
 
 LEXICON Root
 VerbalNuclearClause ;
 
 LEXICON VerbalNuclearClause
-@U.Past.ON@:@U.Past.ON@o^ SubjectPrefixes ;
-@U.Past.OFF@:@U.Past.OFF@0 SubjectPrefixes ;
+@P.PST.ON@:@P.PST.ON@o^ SubjectPrefixes ;  ! past augment
+:0 SubjectPrefixes ;
 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Subject Prefixes in Nahuatl are mostly single consonants (e.g. 'n-', 't-').
+! In Classical Nahuatl, 'i'-epenthesis would occur after the prefix to satisfy
+! syllable structure (e.g. *n#cochi, ni#cochi, but n#acic).
+!
+! * In the Omitlán variety of nhi, the 'i' is always inserted.
+! * In Tenango nhi, 'i' is sometimes epenthesized before the consonant
+!   depending on stress location (eg "it#niqui").
+!
+! The 'i'-epenthesis will be handled via rewrite rules.
+!
+! Additionally, nhi variants, unlike classical or other contemporary dialects,
+! appear to have 'se-' as an alternative 1st person plural subject prefix.
+! Unlike 'ti-', 'se-' does not co-occur with plural suffixes (i.e. the rest of
+! the verb behaves as if it had a singular subject).
+!
 LEXICON SubjectPrefixes
-%<1SgSubj%>@U.PlSubj.OFF@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.SubjPref.ON@n^ ObjectPrefixes ;
-%<2SgSubj%>@U.PlSubj.OFF@@P.2ndPersAddr.ON@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.2ndPersAddr.ON@@P.SubjPref.ON@t^ ObjectPrefixes ;
-%<3SgSubj%>@U.PlSubj.OFF@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.SubjPref.ON@0^ ObjectPrefixes ;
-%<1PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@t^ ObjectPrefixes ;
+%<1SgSubj%>:n^                                                 ObjectPrefixes ;
+%<2SgSubj%>@P.2P.ON@:@P.2P.ON@t^                              ObjectPrefixes ;
+%<3SgSubj%>:0^                                                ObjectPrefixes ;
+%<1PlSubj%>@P.PLS.ON@:@P.PLS.ON@t^                            ObjectPrefixes ;
+%<1PlSubj%>:se^                                               ObjectPrefixes ;
+%<2PlSubj%>@P.PLS.ON@:@P.PLS.ON@n^                            ObjectPrefixes ;
+%<3PlSubj%>@P.PLS.ON@:@P.PLS.ON@0^                            ObjectPrefixes ;
+%<Opt%>%<2SgSubj%>@P.OPT.ON@@P.2P.ON@:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
+%<Opt%>%<2PlSubj%>@P.PLS.ON@@P.OPT.ON@:@P.PLS.ON@@P.OPT.ON@x^ ObjectPrefixes ;
 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! No object prefix for intransitive verbs. Otherwise, use appropriate nhi
+! object prefix.
 !
-! nhi variants mostly appear to have 'se-' as an alternative 1st person plural
-! subject prefix. Unlike 'ti-', 'se-' does not co-occur with plural suffixes
-! (i.e. the verb behaves as if it had a singular subject).
-!
-%<1PlSubj%>@U.PlSubj.OFF@@P.SubjPref.ON@:@U.PlSubj.OFF@@P.SubjPref.ON@se^ ObjectPrefixes ;
-
-%<2PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@n^ ObjectPrefixes ;
-%<3PlSubj%>@U.PlSubj.ON@@P.SubjPref.ON@:@U.PlSubj.ON@@P.SubjPref.ON@0^ ObjectPrefixes ;
-%<Opt%>@U.Past.OFF@@U.PlSubj.ON@@U.Optative.ON@@P.SubjPref.ON@:@U.Past.OFF@@U.PlSubj.ON@@U.Optative.ON@@P.SubjPref.ON@x^ ObjectPrefixes ;
-%<Opt%>@U.Past.OFF@@U.PlSubj.OFF@@P.2ndPersAddr.ON@@U.Optative.ON@@P.SubjPref.ON@:@U.Past.OFF@@U.PlSubj.OFF@@P.2ndPersAddr.ON@@U.Optative.ON@@P.SubjPref.ON@x^ ObjectPrefixes ;
-
-
 LEXICON ObjectPrefixes
-! No object prefix for intransitive verbs
-@U.Trans.OFF@@P.ObjPref.ON@:@U.Trans.OFF@@P.ObjPref.ON@0 Honorific ;
-
-%<1SgObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@nech^ Honorific ;
-%<2SgObj%>@U.Trans.ON@@P.2ndPersAddr.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.2ndPersAddr.ON@@P.ObjPref.ON@mitz^ Honorific ;
-%<3SgObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@K^ Honorific ;
-%<1PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@tech^ Honorific ;
-%<2PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@mech^ Honorific ;
-%<3PlObj%>@U.Trans.ON@@P.ObjPref.ON@:@U.Trans.ON@@P.ObjPref.ON@Kim^ Honorific ;
+@P.INTR.ON@:@P.INTR.ON@0            HonorificDirectional ;
+%<1SgObj%>:nech^                    HonorificDirectional ;
+%<2SgObj%>@P.2P.ON@:@P.2P.ON@mitz^  HonorificDirectional ;
+%<3SgObj%>:K^                       HonorificDirectional ;
+%<1PlObj%>:tech^                    HonorificDirectional ;
+%<2PlObj%>:mech^                    HonorificDirectional ;
+%<3PlObj%>:Kim^                     HonorificDirectional ;
 
 
-LEXICON Honorific
-@R.2ndPersAddr.ON@@P.Hon.ON@%<Hon%>:@R.2ndPersAddr.ON@@P.Hon.ON@on^ Reflexive ;
-Reflexive ;
-
-
-LEXICON Reflexive
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! In nhi, 'on-', which in Classical nahuatl is the 'away from' directional, has
+! come to be used exclusively to express deference. The 'toward' directional
+! prefix, 'hual-', is still used to indicate directionality toward the speaker,
+! but the 'away from' directionality is no longer achievable with 'on-' due to
+! the precedence of 'on-'s usage as an Honorific marker.
 !
+! The 'on-' honorific morpheme also triggers regressive vowel harmony (i -> o).
+!
+LEXICON HonorificDirectional
+%<Hon%>@R.2P@:@R.2P@on^   Reflexive ;
+%<DirToward%>:hual^       Reflexive ;
+0:0                       Reflexive ;
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Not every verb can be reflexive, so maybe roll the reflexive prefix into the
 ! verb stem lexical entry?
 !
-! %<Refl%>@P.Reflexive.ON@:@P.Reflexive.ON@mo^ VerbBase ;
-
-VerbBase ;
-
+LEXICON Reflexive
+! %<Refl%>:mo^ VerbBase ;
+%<GenericObjectThing%>:tla^   VerbBase
+0:0            VerbBase ;
 
 LEXICON VerbBase
-@U.Trans.OFF@@U.Past.OFF@@D.Optative.ON@:@U.Trans.OFF@@U.Past.OFF@@D.Optative.ON@ IntransitiveBase1 ;
-@U.Trans.OFF@@U.Past.ON@@D.Optative.ON@:@U.Trans.OFF@@U.Past.ON@@D.Optative.ON@ IntransitiveBase2 ;
-@U.Trans.OFF@@U.Past.OFF@:@U.Trans.OFF@@U.Past.OFF@ IntransitiveBase3 ;
+@R.INTR@:@R.INTR@ Intransitive ;
+@D.INTR@:@D.INTR@ Transitive ;
 
-@U.Trans.ON@@U.Past.OFF@@D.Optative.ON@:@U.Trans.ON@@U.Past.OFF@@D.Optative.ON@ TransitiveBase1 ;
-@U.Trans.ON@@U.Past.ON@@D.Optative.ON@:@U.Trans.ON@@U.Past.ON@@D.Optative.ON@ TransitiveBase2 ;
-@U.Trans.ON@@U.Past.OFF@:@U.Trans.ON@@U.Past.OFF@ TransitiveBase3 ;
+LEXICON Intransitive
+@D.OPT@:@D.OPT@ IntransitiveBase1 ;
+!@R.PST@@D.OPT@:@R.PST@@D.OPT@ IntransitiveBase2 ;
+!@D.PST@:@D.PST@               IntransitiveBase3 ;
+
+LEXICON Transitive
+@D.PST@@D.OPT@:@D.PST@@D.OPT@ TransitiveBase1 ;
+!@R.PST@@D.OPT@:@R.PST@@D.OPT@ TransitiveBase2 ;
+!@D.PST@:@D.PST@               TransitiveBase3 ;
 
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Verbal Base 1 is used for forming the simple present tense and the Imperfect.
+! It is generally the "canonical" or "dictionary" form.
+!
 LEXICON IntransitiveBase1
-!
-! Used for forming the simple present tense.
-!
-cochi:cochi^ Base1Suffix ;               !"dormir"
-choca:choca^ Base1Suffix ;               !"llorar"
-pano:pano^ Base1Suffix ;                 !"pasar"
-quiza:Kiza^ Base1Suffix ;               !"salir"
+cochi:cochi^                Base1Suffix ; !"dormir"
+choca:choca^                Base1Suffix ; !"llorar"
+panoa:panoa^                Base1Suffix ; !"pasar"
+quiza:Kiza^                 Base1Suffix ; !"salir"
 !%<Refl%>motlalia:motlalia^ Base1Suffix ; !"sentarse"
 
+LEXICON TransitiveBase1
+itta:itta^                  Base1Suffix ; !"ver"
+caqui:KaKi^                 Base1Suffix ; !"escuchar"
+notza:notza^                Base1Suffix ; !"llamar"
+ihtoa:ihtoa^                Base1Suffix ; !"decir"
+tlalia:tlalia^              Base1Suffix ; !"poner"
+mati:mati^                  Base1Suffix ; !"saber"
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Verbal base 2 is used to form the preterite.
+!
 LEXICON IntransitiveBase2
-!
-! Used to form the preterite.
-!
-cochi:coch^ Base2Suffix ;                !"dormir"
-choca:choca^ Base2Suffix ;               !"llorar"
-pano:pano^ Base2Suffix ;                 !"pasar"
-quiza:Kiz^ Base1Suffix ;                 !"salir"
+cochi:coch^                Base2Suffix ; !"dormir"
+choca:choca^               Base2Suffix ; !"llorar"
+panoa:pano^                 Base2Suffix ; !"pasar"
+quiza:Kiz^                 Base2Suffix ; !"salir"
 %<Refl%>motlalia:motlalih^ Base2Suffix ; !"sentarse"
 
-LEXICON TransitiveBase1
-!
-! Used for forming the simple present tense.
-!
-itta:itta^ Base1Suffix ;     !"ver"
-caqui:KaKi^ Base1Suffix ;    !"escuchar"
-notza:notza^ Base1Suffix ;   !"llamar"
-ihtoa:ihtoa^ Base1Suffix ;   !"decir"
-tlalia:tlalia^ Base1Suffix ; !"poner"
-mati:mati^ Base1Suffix ;     !"saber"
-
 LEXICON TransitiveBase2
-itta:itta^ Base2Suffix ;     !"ver"
-caqui:KaK^ Base2Suffix ;     !"escuchar"
-notza:notz^ Base2Suffix ;    !"llamar"
-ihtoa:ihtoh^ Base2Suffix ;   !"decir"
-tlalia:tlalih^ Base2Suffix ; !"sentarse"
-mati:mati^ Base2Suffix ;     !"saber"
+itta:itta^                 Base2Suffix ; !"ver"
+caqui:KaK^                 Base2Suffix ; !"escuchar"
+notza:notz^                Base2Suffix ; !"llamar"
+ihtoa:ihtoh^               Base2Suffix ; !"decir"
+tlalia:tlalih^             Base2Suffix ; !"sentarse"
+mati:mati^                 Base2Suffix ; !"saber"
 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Verbal Base 3 is used to form the future as well as the optative.
+!
 LEXICON IntransitiveBase3
-ochi:cochi^ Base3Suffix ;               !"dormir"
-choca:choca^ Base3Suffix ;               !"llorar"
-pano:pano^ Base3Suffix ;                 !"pasar"
-quiza:Kiza^ Base3Suffix ;               !"salir"
-%<Refl%>motlalia:motlali^ Base3Suffix ;  !"sentarse"
+cochi:cochi^              Base3Suffix ; !"dormir"
+choca:choca^              Base3Suffix ; !"llorar"
+panoa:pano^                Base3Suffix ; !"pasar"
+quiza:Kiza^               Base3Suffix ; !"salir"
+%<Refl%>motlalia:motlali^ Base3Suffix ; !"sentarse"
 
 LEXICON TransitiveBase3
-itta:itta^ Base3Suffix ;     !"ver"
-caqui:KaKi^ Base3Suffix ;    !"escuchar"
-notza:notza^ Base3Suffix ;   !"llamar"
-ihtoa:ihto^ Base3Suffix ;    !"decir"
-tlali:tlali^ Base3Suffix ;   !"poner"
-mati:mati^ Base3Suffix ;     !"saber"
+itta:itta^                Base3Suffix ; !"ver"
+caqui:KaKi^               Base3Suffix ; !"escuchar"
+notza:notza^              Base3Suffix ; !"llamar"
+ihtoa:ihto^               Base3Suffix ; !"decir"
+tlali:tlali^              Base3Suffix ; !"poner"
+mati:mati^                Base3Suffix ; !"saber"
 
 
 LEXICON Base1Suffix
-%<Pres%>@U.Past.OFF@@U.PlSubj.OFF@:@U.Past.OFF@@U.PlSubj.OFF@0 # ;
-%<Pres%>@U.Past.OFF@@U.PlSubj.ON@:@U.Past.OFF@@U.PlSubj.ON@PL # ;
+!%<Pres%>@D.PLS@@D.PST@:@D.PLS@@D.PST@0  # ;
+!%<Pres%>@R.PLS@@D.PST@:@R.PLS@@D.PST@PL # ;
+%<Imp%>@D.PLS@@R.PST@:@D.PLS@@R.PST@ya  # ;
+%<Imp%>@R.PLS@@R.PST@:@R.PLS@@R.PST@yah # ;
 
 LEXICON Base2Suffix
-%<Pret%>@U.PlSubj.OFF@@U.Past.ON@:@U.PlSubj.OFF@@U.Past.ON@K # ;
-%<Pret%>@U.PlSubj.ON@@U.Past.ON@:@U.PlSubj.ON@@U.Past.ON@Ke # ;
+%<Pret%>@D.PLS@:@D.PLS@K  # ;
+%<Pret%>@R.PLS@:@R.PLS@Ke # ;
+
 
 LEXICON Base3Suffix
-%<Fut%>@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@D.Optative.ON@z # ;
-%<Fut%>@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@D.Optative.ON@zque # ;
-%<Opt%>@U.PlSubj.OFF@@U.Past.OFF@@R.Optative.ON@:@U.PlSubj.OFF@@U.Past.OFF@@R.Optative.ON@0 # ;
-%<Opt%>@U.PlSubj.ON@@U.Past.OFF@@R.Optative.ON@:@U.PlSubj.ON@@U.Past.OFF@@R.Optative.ON@Kan # ;
+%<Fut%>@D.PLS@@D.OPT@:@D.PLS@@D.OPT@z    # ;
+%<Fut%>@R.PLS@@D.OPT@:@R.PLS@@D.OPT@zque # ;
+@R.OPT@:@R.OPT@0                         # ;
+@R.OPT@@R.PLS@:@R.OPT@@R.PLS@Kan         # ;
 
