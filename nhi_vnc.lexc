@@ -17,6 +17,13 @@ Multichar_Symbols
 %<Pret%>
 %<Fut%>
 %<Opt%>
+%<Plup%>   !Pluperfect
+%<Cfact%>  !Counterfactual
+%<PerfDirTow%> !Directional Toward
+%<PerfDirAwa%> !Directional Away
+%<ImpDirTow%> !Directional Toward
+%<ImpDirAwa%> !Directional Away
+%<OptDirTow%> !Directional Toward
 
 ! Flag Diacritics
 @P.PST.ON@  !Past (indicates that the augment 'o-' was used)
@@ -36,13 +43,15 @@ Multichar_Symbols
 @P.OINC.ON@ !Verb uses Noun object incorporation.
 @R.OINC@
 @D.OINC@
+@P.MOTION.ON@
+@R.MOTION@
 
 LEXICON Root
 VerbalNuclearClause ;
 
 LEXICON VerbalNuclearClause
 @P.PST.ON@:@P.PST.ON@o^ SubjectPrefixes ;  ! past augment
-:0 SubjectPrefixes ;
+0:0 SubjectPrefixes ;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -98,9 +107,9 @@ LEXICON ObjectPrefixes
 ! The 'on-' honorific morpheme also triggers regressive vowel harmony (i -> o).
 !
 LEXICON HonorificDirectional
-%<Hon%>@R.2P@:@R.2P@on^   Reflexive ;
-%<DirToward%>:hual^       Reflexive ;
-0:0                       Reflexive ;
+%<Hon%>@R.2P@:@R.2P@on^                   Reflexive ;
+%<DirTow%>@R.MOTION@:@R.MOTION@ual^   Reflexive ;
+0:0                                       Reflexive ;
 
 
 
@@ -110,7 +119,9 @@ LEXICON HonorificDirectional
 !
 LEXICON Reflexive
 ! %<Refl%>:mo^ VerbBase ;
-%<GenericObjectThing%>:tla^   VerbBase
+%<IndefObjThing%>:tla^   VerbBase
+%<IndefObjPerson%>:te^   VerbBase
+
 0:0            VerbBase ;
 
 LEXICON VerbBase
@@ -119,13 +130,13 @@ LEXICON VerbBase
 
 LEXICON Intransitive
 @D.OPT@:@D.OPT@ IntransitiveBase1 ;
-!@R.PST@@D.OPT@:@R.PST@@D.OPT@ IntransitiveBase2 ;
-!@D.PST@:@D.PST@               IntransitiveBase3 ;
+@R.PST@@D.OPT@:@R.PST@@D.OPT@ IntransitiveBase2 ;
+@D.PST@:@D.PST@               IntransitiveBase3 ;
 
 LEXICON Transitive
-@D.PST@@D.OPT@:@D.PST@@D.OPT@ TransitiveBase1 ;
-!@R.PST@@D.OPT@:@R.PST@@D.OPT@ TransitiveBase2 ;
-!@D.PST@:@D.PST@               TransitiveBase3 ;
+@D.OPT@:@D.OPT@ TransitiveBase1 ;
+@R.PST@@D.OPT@:@R.PST@@D.OPT@ TransitiveBase2 ;
+TransitiveBase3 ;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -134,18 +145,18 @@ LEXICON Transitive
 !
 LEXICON IntransitiveBase1
 cochi:cochi^                Base1Suffix ; !"dormir"
-choca:choca^                Base1Suffix ; !"llorar"
+!choca:choca^                Base1Suffix ; !"llorar"
 panoa:panoa^                Base1Suffix ; !"pasar"
-quiza:Kiza^                 Base1Suffix ; !"salir"
-!%<Refl%>motlalia:motlalia^ Base1Suffix ; !"sentarse"
+!quiza:Kiza^                 Base1Suffix ; !"salir"
 
 LEXICON TransitiveBase1
-itta:itta^                  Base1Suffix ; !"ver"
-caqui:KaKi^                 Base1Suffix ; !"escuchar"
-notza:notza^                Base1Suffix ; !"llamar"
-ihtoa:ihtoa^                Base1Suffix ; !"decir"
-tlalia:tlalia^              Base1Suffix ; !"poner"
+!itta:itta^                  Base1Suffix ; !"ver"
+!caqui:KaKi^                 Base1Suffix ; !"escuchar"
+!notza:notza^                Base1Suffix ; !"llamar"
+!tlalia:tlalia^              Base1Suffix ; !"poner"
 mati:mati^                  Base1Suffix ; !"saber"
+!piya:piya^                  Base1Suffix ; !"tener"
+temoa:temoa^                Base1Suffix ; !"buscar"
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -153,53 +164,102 @@ mati:mati^                  Base1Suffix ; !"saber"
 !
 LEXICON IntransitiveBase2
 cochi:coch^                Base2Suffix ; !"dormir"
-choca:choca^               Base2Suffix ; !"llorar"
-panoa:pano^                 Base2Suffix ; !"pasar"
-quiza:Kiz^                 Base2Suffix ; !"salir"
-%<Refl%>motlalia:motlalih^ Base2Suffix ; !"sentarse"
+!choca:choca^               Base2Suffix ; !"llorar"
+panoa:pano^                Base2Suffix ; !"pasar"
+!quiza:Kiz^                 Base2Suffix ; !"salir"
 
 LEXICON TransitiveBase2
-itta:itta^                 Base2Suffix ; !"ver"
-caqui:KaK^                 Base2Suffix ; !"escuchar"
-notza:notz^                Base2Suffix ; !"llamar"
-ihtoa:ihtoh^               Base2Suffix ; !"decir"
-tlalia:tlalih^             Base2Suffix ; !"sentarse"
+!itta:itta^                 Base2Suffix ; !"ver"
+!caqui:KaK^                 Base2Suffix ; !"escuchar"
+!notza:notz^                Base2Suffix ; !"llamar"
+!tlalia:tlalih^             Base2Suffix ; !"poner"
 mati:mati^                 Base2Suffix ; !"saber"
-
+!piya:pix^                  Base2Suffix ; !"tener"
+temoa:temoh^               Base2Suffix ; !"buscar"
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Verbal Base 3 is used to form the future as well as the optative.
 !
 LEXICON IntransitiveBase3
 cochi:cochi^              Base3Suffix ; !"dormir"
-choca:choca^              Base3Suffix ; !"llorar"
-panoa:pano^                Base3Suffix ; !"pasar"
-quiza:Kiza^               Base3Suffix ; !"salir"
-%<Refl%>motlalia:motlali^ Base3Suffix ; !"sentarse"
+!choca:choca^              Base3Suffix ; !"llorar"
+panoa:pano^               Base3Suffix ; !"pasar"
+!quiza:Kiza^               Base3Suffix ; !"salir"
 
 LEXICON TransitiveBase3
-itta:itta^                Base3Suffix ; !"ver"
-caqui:KaKi^               Base3Suffix ; !"escuchar"
-notza:notza^              Base3Suffix ; !"llamar"
-ihtoa:ihto^               Base3Suffix ; !"decir"
-tlali:tlali^              Base3Suffix ; !"poner"
+!itta:itta^                Base3Suffix ; !"ver"
+!caqui:KaKi^               Base3Suffix ; !"escuchar"
+!notza:notza^              Base3Suffix ; !"llamar"
+!tlali:tlali^              Base3Suffix ; !"poner"
 mati:mati^                Base3Suffix ; !"saber"
+!piya:piya^                Base3Suffix ; !"tener"
+temoa:temo^               Base3Suffix ; !"buscar"
 
 
 LEXICON Base1Suffix
-!%<Pres%>@D.PLS@@D.PST@:@D.PLS@@D.PST@0  # ;
-!%<Pres%>@R.PLS@@D.PST@:@R.PLS@@D.PST@PL # ;
-%<Imp%>@D.PLS@@R.PST@:@D.PLS@@R.PST@ya  # ;
-%<Imp%>@R.PLS@@R.PST@:@R.PLS@@R.PST@yah # ;
+@D.PST@:@D.PST@ PresentTense ;
+@R.PST@:@R.PST@ Imperfect ;
 
 LEXICON Base2Suffix
+0:0 Preterite ;
+0:0 Pluperfect ;
+
+LEXICON Base3Suffix
+@D.OPT@@D.PST@:@D.OPT@@D.PST@ Future ;
+@D.OPT@@D.PST@:@D.OPT@@D.PST@ Counterfactual ;
+@R.OPT@@D.PST@:@R.OPT@@D.PST@ Optative ;
+
+@D.OPT@:@D.OPT@ PerfectiveDirectionalToward ;
+@D.OPT@:@D.OPT@ PerfectiveDirectionalAway ;
+@D.OPT@@D.PST@:@D.OPT@@D.PST@ ImperfectiveDirectionalToward ;
+@D.OPT@@D.PST@:@D.OPT@@D.PST@ ImperfectiveDirectionalAway ;
+@R.OPT@@D.PST@:@R.OPT@@D.PST@ OptativeDirectonalToward ;
+
+
+LEXICON PresentTense
+%<Pres%>@D.PST@:@D.PST@0  # ;
+%<Pres%>@R.PLS@:@R.PLS@PL # ;
+
+LEXICON Imperfect
+%<Imp%>@D.PLS@:@D.PLS@ya  # ;
+%<Imp%>@R.PLS@:@R.PLS@yah # ;
+
+LEXICON Preterite
 %<Pret%>@D.PLS@:@D.PLS@K  # ;
 %<Pret%>@R.PLS@:@R.PLS@Ke # ;
 
+LEXICON Pluperfect
+%<Plup%>@D.PLS@:@D.PLS@Ka   # ;
+%<Plup%>@R.PLS@:@R.PLS@Kah  # ;
 
-LEXICON Base3Suffix
-%<Fut%>@D.PLS@@D.OPT@:@D.PLS@@D.OPT@z    # ;
-%<Fut%>@R.PLS@@D.OPT@:@R.PLS@@D.OPT@zque # ;
-@R.OPT@:@R.OPT@0                         # ;
-@R.OPT@@R.PLS@:@R.OPT@@R.PLS@Kan         # ;
+LEXICON Future
+%<Fut%>@D.PLS@:@D.PLS@s    # ;
+%<Fut%>@R.PLS@:@R.PLS@sque # ;
 
+LEXICON Counterfactual
+%<Cfact%>@D.PLS@:@D.PLS@sKia # ;
+%<Cfact%>@R.PLS@:@R.PLS@sKiah # ;
+
+LEXICON Optative
+@D.PLS@:@D.PLS@0   # ;
+@R.PLS@:@R.PLS@Kan # ;
+
+Lexicon PerfectiveDirectionalToward
+%<PerfDirTow%>@D.PLS@:@D.PLS@Ko # ;
+%<PerfDirTow%>@R.PLS@:@R.PLS@Koh # ;
+
+Lexicon ImperfectiveDirectionalToward
+%<ImpDirTow%>@D.PLS@:@D.PLS@Kiuh # ;
+%<ImpDirTow%>@R.PLS@:@R.PLS@Kiuih # ;
+
+Lexicon OptativeDirectonalToward
+%<OptDirTow%>@D.PLS@:@D.PLS@Ki # ;
+%<OptDirTow%>@R.PLS@:@R.PLS@Kih # ;
+
+Lexicon PerfectiveDirectionalAway
+%<PerfDirAwa%>@D.PLS@:@D.PLS@to # ;
+%<PerfDirAwa%>@R.PLS@:@R.PLS@toh # ;
+
+Lexicon ImperfectiveDirectionalAway
+%<ImpDirAwa%>@D.PLS@:@D.PLS@tiuh # ;
+%<ImpDirAwa%>@R.PLS@:@R.PLS@ih # ;

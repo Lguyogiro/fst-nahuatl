@@ -45,6 +45,9 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 - [x] Future
 - [x] Imperfect
 - [x] Optative
+- [x] Directional Suuffixes
+- [x] Counterfactual
+- [x] Pluperfect
 - [ ] Passive
 - [ ] Noun Object incorporation
 - [ ] Subject/Object person-number restrictions

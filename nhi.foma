@@ -36,13 +36,14 @@ define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
 ! VNC Rules
 !
 define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
-define ObjIEpenthesis K -> K i || [ .#. | Cons ] "^"* _ "^" PreVerbalFlags* Cons ;
-define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | i m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
+!                                     #         @P.PLS.ON@c@D.INTR@temo@D.OPT@@R.PLS@toh
+define ObjIEpenthesis K -> K i || [ .#. | Cons ] PreSubjFlags* "^"* _ "^" PreVerbalFlags* Cons ;
+define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
 define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
 define StoZRewrite s -> z || _ AllVerbalFlags* [ Cons | a | o | .#. ] ;
 define StoCRewrite s -> c ;
 define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
-define PresPluralEndingAfterO P L -> h u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+define PresPluralEndingAfterO P L -> u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
 define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
 define PresPluralEnding P L -> 0 || _ .#.;
 define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
