@@ -9,10 +9,21 @@ Multichar_Symbols
 %<Poss3Pl%>
 %<Poss2Pl%>
 %<Poss1Pl%>
+%<1SgSubj%>
+%<1PlSubj%>
+%<2SgSubj%>
+%<2PlSubj%>
+%<3SgSubj%>
+%<3PlSubj%>
 %<Dim%>
 %<Dim1%>
 %<Dim2%>
 @U.poss.ON@
+
+@P.PL.ON@
+@R.PL@
+@D.PL@
+
 @R.poss@
 @D.poss@
 @U.suff.tl@
@@ -27,7 +38,17 @@ LEXICON Root
 NominalNuclearClause ;
 
 LEXICON NominalNuclearClause
-NominalStem ;
+! NominalStem ;
+!@P.PL.ON@:@P.PL.ON@ NominalStem ;
+SubjPrefix ;
+
+LEXICON SubjPrefix
+%<1SgSubj%>:n^ NominalStem ;
+!%<2SgSubj%>:t^ NominalStem ;
+!%<3SgSubj%>:0 NominalStem ;
+!%<1PlSubj%>@P.PL.ON@:@P.PL.ON@t^ NominalStem ;
+!%<2PlSubj%>@P.PL.ON@:@P.PL.ON@n^ NominalStem ;
+!%<3PlSubj%>@P.PL.ON@:@P.PL.ON@0^ NominalStem ;
 
 LEXICON NominalStem
 Stem ;
@@ -35,19 +56,17 @@ Stem ;
 
 
 LEXICON Poss
-%<Poss1Sg%>:no^ Stem ;
+!%<Poss1Sg%>:no^ Stem ;
 %<Poss2Sg%>:mo^ Stem ;
-%<Poss3Sg%>:i^ Stem ;
-%<Poss1Pl%>:to^ Stem ;
-
+!%<Poss3Sg%>:i^ Stem ;
+!%<Poss1Pl%>:to^ Stem ;
 !
 !In San Miguel Tenango, the 2nd person plural possessive prefix is "namo-",
 ! whereas in Omitlan, it appears to be "nimo-".
 !
-%<Poss2Pl%>:nimo^ Stem ;
-%<tenango%>%<Poss2Pl%>:namo^ Stem ;
-%<tenango%>%<Poss2Pl%>:namo^ Stem ;
-%<Poss3Pl%>:im^ Stem ;
+!%<Poss2Pl%>:nimo^ Stem ;
+!%<tenango%>%<Poss2Pl%>:namo^ Stem ;
+!%<Poss3Pl%>:im^ Stem ;
 
 
 LEXICON Stem
@@ -60,7 +79,7 @@ LEXICON Stem
 
 LEXICON TlStem
 amatl:ama^ Suff ;                       !"papel/libro"
-ciuatl:cihua^ Suff ;                    !"woman"
+zihuatl:zihua^ Suff ;                    !"woman"
 oquichtl:oquich^ Suff ;                 !"male"
 tlacatl:tlaca^ Suff ;                   !"man"
 tototl:toto^ Suff ;                     !"pajaro"
@@ -73,10 +92,10 @@ tlaltitl:tlalti^ Suff ;                 !"earth rock"
 atl:a^ Suff ;                           !"agua"
 nacatl:naca^ Suff ;                     !"carne"
 ichcatl:ichca^ Suff ;                   !"borrego"
-tipostl:tipos^ Suff ;                   !"carro/algo metalico"
+tipoztl:tipoz^ Suff ;                   !"carro/algo metalico"
 yolotl:yolo^ Suff ;                     !"corazon"
 conetl:cone^ Suff ;                     !"bebe"
-cosamalotl:cosamalo^ Suff ;             !"arcoiris"
+cozamalotl:cozamalo^ Suff ;             !"arcoiris"
 ichpocaconetl:ichpocacone^ Suff ;       !"girl baby"
 quichconetl:quichcone^ Suff ;           !"male baby"
 coyotl:coyo^ Suff ;                     !"coyote"
@@ -96,7 +115,7 @@ mixtli:mix^ Suff           !"nube
 
 LEXICON LiStem
 calli:cal^ Suff ;
-citlalli:citlal^ Suff ;
+zitlalli:zitlal^ Suff ;
 
 
 !
@@ -104,7 +123,7 @@ citlalli:citlal^ Suff ;
 !
 LEXICON INStem
 chapolin:chapol ;   !"chapulin"
-tamasolin:tamasol ; !"rana"
+tamazolin:tamazol ; !"rana"
 ayotachin:ayotoch ; !"armadillo"
 
 
@@ -119,33 +138,33 @@ tlapitlanil:tlapitlanil^ Suff ; !"rayo"
 
 
 LEXICON Suff
-0:0 UnpossessedEndings ;
+!0:0 UnpossessedEndings ;
 0:0 PossessedEndings ;
 !@C.suff@%#:@C.suff@0 Stem ; ! Compound Nouns
 
 LEXICON UnpossessedEndings
 ! Singulars
-@U.suff.other@@D.poss@%<N%>%<Abs%>:@U.suff.other@@D.poss@ # ;
-@U.suff.li@@D.poss@%<N%>%<Abs%>:@U.suff.li@@D.poss@li # ;
-@U.suff.tl@@D.poss@%<N%>%<Abs%>:@U.suff.tl@@D.poss@tl # ;
-@U.suff.tli@@D.poss@%<N%>%<Abs%>:@U.suff.tli@@D.poss@tli # ;
-@U.suff.in@@D.poss@%<N%>%<Abs%>:@U.suff.in@@D.poss@in # ;
+@D.PL@@U.suff.other@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.other@@D.poss@ # ;
+@D.PL@@U.suff.li@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.li@@D.poss@li # ;
+@D.PL@@U.suff.tl@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tl@@D.poss@tl # ;
+@D.PL@@U.suff.tli@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tli@@D.poss@tli # ;
+@D.PL@@U.suff.in@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.in@@D.poss@in # ;
 
 ! Plurals
-@U.suff.li@@D.poss@%<N%>%<Pl%>:@U.suff.li@@D.poss@lime # ;
-@D.suff.li@@D.poss@%<N%>%<Pl%>:@D.suff.li@@D.poss@me # ;
+@R.PL@@U.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@U.suff.li@@D.poss@lime # ;
+@R.PL@@D.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@D.suff.li@@D.poss@me # ;
 
 ! Dim.
-@D.poss@%<N%>:@D.poss@ Diminutive ;
+!@D.poss@%<N%>:@D.poss@ Diminutive ;
 
 
 LEXICON PossessedEndings
-@R.poss@%<N%>:@R.poss@0 # ;
-@R.poss@%<N%>%<Pl%>:@R.poss@huan # ;
-@R.poss@%<N%>:@R.poss@ Diminutive ;
+@D.PL@@R.poss@%<N%>:@D.PL@@R.poss@0 # ;
+@R.PL@@R.poss@%<N%>%<Pl%>:@R.PL@@R.poss@huan # ;
+!@R.poss@%<N%>:@R.poss@ Diminutive ;
 
 
 LEXICON Diminutive
-%<Dim1%>:^tzin # ;
-%<Dim2%>:^tzintli # ;
-%<Pl%>%<Dim%>:^tzitzin # ;
+%<Dim1%>@D.PL@:@D.PL@^tzin # ;
+%<Dim2%>@D.PL@:@D.PL@^tzintli # ;
+%<Pl%>%<Dim%>@R.PL@:@R.PL@^tzitzin # ;

@@ -3,13 +3,15 @@ define Cons [b | c | c h | d | f | g | h | j | k | l | m | n | p | q | r | s |
 define Vowels [a | e | i | o | u ] ;
 
 
-define NominalVerbalFlags ["@U.poss.ON@" | "@R.poss@" | "@D.poss@" |
-                           "@U.suff.tl@" | "@U.suff.tli@" | "@U.suff.li@" |
-                           "@U.suff.in@" | "@U.suff.other@" | "@C.suff@" |
-                           "@D.suff.li@" ] ;
+define NominalFlags ["@U.poss.ON@" | "@R.poss@" | "@D.poss@" |
+                     "@U.suff.tl@" | "@U.suff.tli@" | "@U.suff.li@" |
+                     "@U.suff.in@" | "@U.suff.other@" | "@C.suff@" |
+                     "@D.suff.li@" | "@P.PL.ON@" | "@R.PL@" | "@D.PL@"] ;
+
 define SuffixFlags ["@U.suff.li@" | "@U.suff.tli@" | "@U.suff.other@" |
                     "@U.suff.tl@"] ;
-define PossFlags [ "@U.poss.ON@" | "@R.poss" | "D.poss" ] ;
+define PossFlags [ "@U.poss.ON@" | "@R.poss@" | "D.poss@" ] ;
+
 define AllVerbalFlags ["@P.PST.ON@" | "@R.PST@" | "@D.PST@" | "@P.PLS.ON@" |
                        "@R.PLS@" | "@D.PLS@" | "@P.INTR.ON@" | "@R.INTR@" |
                        "@D.INTR@" | "@P.OPT.ON@" | "@R.OPT@" | "@D.OPT@" |
@@ -24,71 +26,71 @@ define PreVerbalFlags ["@R.INTR@" | "@D.INTR@" | "@D.PST@" | "@R.PST@" |
 !
 ! NNC Rules
 !
+define NSubjIEpenthesis n -> n i, t -> t i ||.#. ("@P.PL.ON@") _ "^" ["@U.poss.ON@"|SuffixFlags]* Cons ;
 define NasalAssimilation n -> 0 || _ SuffixFlags "@U.pos.OFF@" "^" m ;
 define DeleteIAfterReflexiveO i -> 0 || o "^" SuffixFlags _ Cons Cons ;
 define Nelision n -> 0 || _ "@R.poss@" "^" h u a n ;
 define PossessiveNasalAssimilation m -> n || "@U.poss.ON@" i _ "^" SuffixFlags [c | t | n | s | y] ;
-define PossVEnding a -> a u h, o -> o u h, i -> i u h, e -> e u h || _ PossFlags "^" 0 .#. ;
-define WrewritePt1 W -> u h  || _ AllFlagDiacritics*  "^" .#. ;
-define WrewritePt2 W -> h u i || _ AllFlagDiacritics* "^" t l .#. ;
+define PossVEnding a -> a u h, o -> o u h, i -> i u h, e -> e u h || _ "^" ("@D.PL@") PossFlags .#. ;
+!xi                             W @D.PL@@R.poss@
+define WrewritePt1 W -> u h  || Vowels* _ "^" NominalFlags* .#. ;
+define WrewritePt2 W -> h u i || _ NominalFlags* "^" t l .#. ;
 
 !
 ! VNC Rules
 !
-define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
-!                                     #         @P.PLS.ON@c@D.INTR@temo@D.OPT@@R.PLS@toh
-define ObjIEpenthesis K -> K i || [ .#. | Cons ] PreSubjFlags* "^"* _ "^" PreVerbalFlags* Cons ;
-define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
-define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
-define StoZRewrite s -> z || _ AllVerbalFlags* [ Cons | a | o | .#. ] ;
-define StoCRewrite s -> c ;
-define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
-define PresPluralEndingAfterO P L -> u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
-define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
-define PresPluralEnding P L -> 0 || _ .#.;
-define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
-define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
-define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
-define KtoC K -> c ;
-define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
+!define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
+!define ObjIEpenthesis K -> K i || [ .#. | Cons ] PreSubjFlags* "^"* _ "^" PreVerbalFlags* Cons ;
+!define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
+!define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
+!define StoZRewrite s -> z ;
+!define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+!define PresPluralEndingAfterO P L -> u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+!define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
+!define PresPluralEnding P L -> 0 || _ .#.;
+!define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
+!define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
+!define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
+!define KtoC K -> c ;
+!define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
 define Cleanup "^" -> 0 ;
 
-read lexc nhi_vnc.lexc
-define Lexicon;
+!read lexc nhi_vnc.lexc
+!define Lexicon;
 
-define Grammar Lexicon                      .o.
-               SubjIEpenthesis              .o.
-               ObjIEpenthesis               .o.
-               HonorificVowelHarmony        .o.
-               KDegemination                .o.
-               StoZRewrite                  .o.
-               StoCRewrite                  .o.
-               PresPluralEndingAfterA       .o.
-               PresPluralEndingAfterO       .o.
-               PresPluralEndingAfterE       .o.
-               PresPluralEnding             .o.
-               NasalAssimilation            .o.
-               KElision                     .o.
-               IhToEPreterite               .o.
-               KtoQui                       .o.
-               KtoC                         .o.
-               Cleanup ;
+!define Grammar Lexicon                      .o.
+!               SubjIEpenthesis              .o.
+!               ObjIEpenthesis               .o.
+!               HonorificVowelHarmony        .o.
+!               KDegemination                .o.
+!               StoZRewrite                  .o.
+!               PresPluralEndingAfterA       .o.
+!               PresPluralEndingAfterO       .o.
+!               PresPluralEndingAfterE       .o.
+!               PresPluralEnding             .o.
+!               NasalAssimilation            .o.
+!               KElision                     .o.
+!               IhToEPreterite               .o.
+!               KtoQui                       .o.
+!               KtoC                         .o.
+!               Cleanup ;
 
 
 !
 ! The following rule sequence is used for NNCs
 !
-!read lexc nhi_nnc.lexc
-!define Lexicon;
-!define Grammar Lexicon                     .o.
-!               DeleteIAfterReflexiveO      .o.
-!               NasalAssimilation           .o.
-!               PossessiveNasalAssimilation .o.
-!               PossVEnding                 .o.
-!               Nelision                    .o.
-!               WrewritePt1                 .o.
-!               WrewritePt2                 .o.
-!               Cleanup ;
+read lexc nhi_nnc.lexc
+define Lexicon;
+define Grammar Lexicon                     .o.
+               NSubjIEpenthesis             .o.
+               DeleteIAfterReflexiveO      .o.
+               NasalAssimilation           .o.
+               PossessiveNasalAssimilation .o.
+               PossVEnding                 .o.
+               Nelision                    .o.
+               WrewritePt1                 .o.
+               WrewritePt2                 .o.
+               Cleanup ;
 
 regex Grammar;
 

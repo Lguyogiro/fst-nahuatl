@@ -71,11 +71,11 @@ LEXICON VerbalNuclearClause
 ! the verb behaves as if it had a singular subject).
 !
 LEXICON SubjectPrefixes
-%<1SgSubj%>:n^                                                 ObjectPrefixes ;
+%<1SgSubj%>:n^                                                ObjectPrefixes ;
 %<2SgSubj%>@P.2P.ON@:@P.2P.ON@t^                              ObjectPrefixes ;
 %<3SgSubj%>:0^                                                ObjectPrefixes ;
 %<1PlSubj%>@P.PLS.ON@:@P.PLS.ON@t^                            ObjectPrefixes ;
-%<1PlSubj%>:se^                                               ObjectPrefixes ;
+%<1PlSubj%>:ze^                                               ObjectPrefixes ;
 %<2PlSubj%>@P.PLS.ON@:@P.PLS.ON@n^                            ObjectPrefixes ;
 %<3PlSubj%>@P.PLS.ON@:@P.PLS.ON@0^                            ObjectPrefixes ;
 %<Opt%>%<2SgSubj%>@P.OPT.ON@@P.2P.ON@:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
@@ -108,7 +108,7 @@ LEXICON ObjectPrefixes
 !
 LEXICON HonorificDirectional
 %<Hon%>@R.2P@:@R.2P@on^                   Reflexive ;
-%<DirTow%>@R.MOTION@:@R.MOTION@ual^   Reflexive ;
+%<DirTow%>@R.MOTION@:@R.MOTION@ual^       Reflexive ;
 0:0                                       Reflexive ;
 
 
@@ -121,7 +121,6 @@ LEXICON Reflexive
 ! %<Refl%>:mo^ VerbBase ;
 %<IndefObjThing%>:tla^   VerbBase
 %<IndefObjPerson%>:te^   VerbBase
-
 0:0            VerbBase ;
 
 LEXICON VerbBase
@@ -145,18 +144,21 @@ TransitiveBase3 ;
 !
 LEXICON IntransitiveBase1
 cochi:cochi^                Base1Suffix ; !"dormir"
-!choca:choca^                Base1Suffix ; !"llorar"
+choca:choca^                Base1Suffix ; !"llorar"
 panoa:panoa^                Base1Suffix ; !"pasar"
-!quiza:Kiza^                 Base1Suffix ; !"salir"
+quiza:Kiza^                 Base1Suffix ; !"salir"
 
 LEXICON TransitiveBase1
-!itta:itta^                  Base1Suffix ; !"ver"
-!caqui:KaKi^                 Base1Suffix ; !"escuchar"
-!notza:notza^                Base1Suffix ; !"llamar"
-!tlalia:tlalia^              Base1Suffix ; !"poner"
+itta:itta^                  Base1Suffix ; !"ver"
+caqui:KaKi^                 Base1Suffix ; !"escuchar"
+notza:notza^                Base1Suffix ; !"llamar"
+tlalia:tlalia^              Base1Suffix ; !"poner"
 mati:mati^                  Base1Suffix ; !"saber"
-!piya:piya^                  Base1Suffix ; !"tener"
+piya:piya^                  Base1Suffix ; !"tener"
 temoa:temoa^                Base1Suffix ; !"buscar"
+ihtoa:ihtoa^                Base1Suffix ; !"decir"
+palehuia:palehuia^          Base1Suffix ; !"apoyar"
+ilhuia:ilhuia^              Base1Suffix ; !"contar/decir"
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -164,36 +166,43 @@ temoa:temoa^                Base1Suffix ; !"buscar"
 !
 LEXICON IntransitiveBase2
 cochi:coch^                Base2Suffix ; !"dormir"
-!choca:choca^               Base2Suffix ; !"llorar"
+choca:choca^               Base2Suffix ; !"llorar"
 panoa:pano^                Base2Suffix ; !"pasar"
-!quiza:Kiz^                 Base2Suffix ; !"salir"
+quiza:Kiz^                 Base2Suffix ; !"salir"
 
 LEXICON TransitiveBase2
-!itta:itta^                 Base2Suffix ; !"ver"
-!caqui:KaK^                 Base2Suffix ; !"escuchar"
-!notza:notz^                Base2Suffix ; !"llamar"
-!tlalia:tlalih^             Base2Suffix ; !"poner"
+itta:itta^                 Base2Suffix ; !"ver"
+caqui:KaK^                 Base2Suffix ; !"escuchar"
+notza:notz^                Base2Suffix ; !"llamar"
+tlalia:tlalih^             Base2Suffix ; !"poner"
 mati:mati^                 Base2Suffix ; !"saber"
-!piya:pix^                  Base2Suffix ; !"tener"
+piya:pix^                  Base2Suffix ; !"tener"
 temoa:temoh^               Base2Suffix ; !"buscar"
+ihtoa:ihto^                Base2Suffix ; !"decir"
+palehuia:palehuih^         Base2Suffix ; !"apoyar"
+ilhuia:ilhuih^             Base2Suffix ; !"contar/decir"
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Verbal Base 3 is used to form the future as well as the optative.
 !
 LEXICON IntransitiveBase3
 cochi:cochi^              Base3Suffix ; !"dormir"
-!choca:choca^              Base3Suffix ; !"llorar"
+choca:choca^              Base3Suffix ; !"llorar"
 panoa:pano^               Base3Suffix ; !"pasar"
-!quiza:Kiza^               Base3Suffix ; !"salir"
+quiza:Kiza^               Base3Suffix ; !"salir"
 
 LEXICON TransitiveBase3
-!itta:itta^                Base3Suffix ; !"ver"
-!caqui:KaKi^               Base3Suffix ; !"escuchar"
-!notza:notza^              Base3Suffix ; !"llamar"
-!tlali:tlali^              Base3Suffix ; !"poner"
+itta:itta^                Base3Suffix ; !"ver"
+caqui:KaKi^               Base3Suffix ; !"escuchar"
+notza:notza^              Base3Suffix ; !"llamar"
+tlali:tlali^              Base3Suffix ; !"poner"
 mati:mati^                Base3Suffix ; !"saber"
-!piya:piya^                Base3Suffix ; !"tener"
+piya:piya^                Base3Suffix ; !"tener"
 temoa:temo^               Base3Suffix ; !"buscar"
+ihtoa:ihto^               Base3Suffix ; !"decir"
+palehuia:palehui^         Base3Suffix ; !"apoyar"
+ilhuia:ilhui^             Base3Suffix ; !"contar/decir"
 
 
 LEXICON Base1Suffix
@@ -233,12 +242,12 @@ LEXICON Pluperfect
 %<Plup%>@R.PLS@:@R.PLS@Kah  # ;
 
 LEXICON Future
-%<Fut%>@D.PLS@:@D.PLS@s    # ;
-%<Fut%>@R.PLS@:@R.PLS@sque # ;
+%<Fut%>@D.PLS@:@D.PLS@z    # ;
+%<Fut%>@R.PLS@:@R.PLS@zque # ;
 
 LEXICON Counterfactual
-%<Cfact%>@D.PLS@:@D.PLS@sKia # ;
-%<Cfact%>@R.PLS@:@R.PLS@sKiah # ;
+%<Cfact%>@D.PLS@:@D.PLS@zKia # ;
+%<Cfact%>@R.PLS@:@R.PLS@zKiah # ;
 
 LEXICON Optative
 @D.PLS@:@D.PLS@0   # ;
