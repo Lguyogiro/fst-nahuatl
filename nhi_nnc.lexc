@@ -121,10 +121,10 @@ zitlalli:zitlal^ Suff ;
 !
 ! These noun stems are usually animals.
 !
-LEXICON INStem
-chapolin:chapol ;   !"chapulin"
-tamazolin:tamazol ; !"rana"
-ayotachin:ayotoch ; !"armadillo"
+LEXICON InStem
+chapolin:chapol Suff ;   !"chapulín"
+tamazolin:tamazol Suff ; !"rana"
+ayotachin:ayotoch Suff ; !"armadillo"
 
 
 LEXICON SuffixlessStem
@@ -142,17 +142,17 @@ LEXICON Suff
 0:0 PossessedEndings ;
 !@C.suff@%#:@C.suff@0 Stem ; ! Compound Nouns
 
-LEXICON UnpossessedEndings
-! Singulars
-@D.PL@@U.suff.other@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.other@@D.poss@ # ;
-@D.PL@@U.suff.li@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.li@@D.poss@li # ;
-@D.PL@@U.suff.tl@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tl@@D.poss@tl # ;
-@D.PL@@U.suff.tli@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tli@@D.poss@tli # ;
-@D.PL@@U.suff.in@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.in@@D.poss@in # ;
-
-! Plurals
-@R.PL@@U.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@U.suff.li@@D.poss@lime # ;
-@R.PL@@D.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@D.suff.li@@D.poss@me # ;
+!LEXICON UnpossessedEndings
+!! Singulars
+!@D.PL@@U.suff.other@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.other@@D.poss@ # ;
+!@D.PL@@U.suff.li@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.li@@D.poss@li # ;
+!@D.PL@@U.suff.tl@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tl@@D.poss@tl # ;
+!@D.PL@@U.suff.tli@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tli@@D.poss@tli # ;
+!@D.PL@@U.suff.in@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.in@@D.poss@in # ;
+!
+!! Plurals
+!@R.PL@@U.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@U.suff.li@@D.poss@lime # ;
+!@R.PL@@D.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@D.suff.li@@D.poss@me # ;
 
 ! Dim.
 !@D.poss@%<N%>:@D.poss@ Diminutive ;
@@ -164,7 +164,8 @@ LEXICON PossessedEndings
 !@R.poss@%<N%>:@R.poss@ Diminutive ;
 
 
-LEXICON Diminutive
-%<Dim1%>@D.PL@:@D.PL@^tzin # ;
-%<Dim2%>@D.PL@:@D.PL@^tzintli # ;
-%<Pl%>%<Dim%>@R.PL@:@R.PL@^tzitzin # ;
+!LEXICON Diminutive
+!%<Dim1%>@D.PL@:@D.PL@^tzin # ;
+!%<Dim2%>@D.PL@:@D.PL@^tzintli # ;
+!%<Pl%>%<Dim%>@R.PL@:@R.PL@^tzitzin # ;
+
