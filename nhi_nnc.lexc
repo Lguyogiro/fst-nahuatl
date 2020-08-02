@@ -110,7 +110,7 @@ itzcuintli:itzcuin^ Suff;  !"perro"
 pahtli:pah^ Suff;          !"medicina"
 poctli:poc^ Suff;          !"humo"
 metztli:metz^ Suff;        !"luna"
-mixtli:mix^ Suff           !"nube
+mixtli:mix^ Suff ;          !"nube
 
 
 LEXICON LiStem

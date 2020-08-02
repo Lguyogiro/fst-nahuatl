@@ -72,14 +72,14 @@ LEXICON VerbalNuclearClause
 !
 LEXICON SubjectPrefixes
 %<1SgSubj%>:n^                                                ObjectPrefixes ;
-%<2SgSubj%>@P.2P.ON@:@P.2P.ON@t^                              ObjectPrefixes ;
+@P.2P.ON@%<2SgSubj%>:@P.2P.ON@t^                              ObjectPrefixes ;
 %<3SgSubj%>:0^                                                ObjectPrefixes ;
-%<1PlSubj%>@P.PLS.ON@:@P.PLS.ON@t^                            ObjectPrefixes ;
+@P.PLS.ON@%<1PlSubj%>:@P.PLS.ON@t^                            ObjectPrefixes ;
 %<1PlSubj%>:ze^                                               ObjectPrefixes ;
-%<2PlSubj%>@P.PLS.ON@:@P.PLS.ON@n^                            ObjectPrefixes ;
-%<3PlSubj%>@P.PLS.ON@:@P.PLS.ON@0^                            ObjectPrefixes ;
-%<Opt%>%<2SgSubj%>@P.OPT.ON@@P.2P.ON@:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
-%<Opt%>%<2PlSubj%>@P.PLS.ON@@P.OPT.ON@:@P.PLS.ON@@P.OPT.ON@x^ ObjectPrefixes ;
+@P.PLS.ON@%<2PlSubj%>:@P.PLS.ON@n^                            ObjectPrefixes ;
+@P.PLS.ON@%<3PlSubj%>:@P.PLS.ON@0^                            ObjectPrefixes ;
+@P.OPT.ON@@P.2P.ON@%<Opt%>%<2SgSubj%>:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
+@P.PLS.ON@@P.OPT.ON@%<Opt%>%<2PlSubj%>:@P.PLS.ON@@P.OPT.ON@x^ ObjectPrefixes ;
 
 
 
@@ -90,7 +90,7 @@ LEXICON SubjectPrefixes
 LEXICON ObjectPrefixes
 @P.INTR.ON@:@P.INTR.ON@0            HonorificDirectional ;
 %<1SgObj%>:nech^                    HonorificDirectional ;
-%<2SgObj%>@P.2P.ON@:@P.2P.ON@mitz^  HonorificDirectional ;
+@P.2P.ON@%<2SgObj%>:@P.2P.ON@mitz^  HonorificDirectional ;
 %<3SgObj%>:K^                       HonorificDirectional ;
 %<1PlObj%>:tech^                    HonorificDirectional ;
 %<2PlObj%>:mech^                    HonorificDirectional ;
@@ -107,8 +107,8 @@ LEXICON ObjectPrefixes
 ! The 'on-' honorific morpheme also triggers regressive vowel harmony (i -> o).
 !
 LEXICON HonorificDirectional
-%<Hon%>@R.2P@:@R.2P@on^                   Reflexive ;
-%<DirTow%>@R.MOTION@:@R.MOTION@ual^       Reflexive ;
+@R.2P@%<Hon%>:@R.2P@on^                   Reflexive ;
+@R.MOTION@%<DirTow%>:@R.MOTION@ual^       Reflexive ;
 0:0                                       Reflexive ;
 
 
@@ -119,8 +119,8 @@ LEXICON HonorificDirectional
 !
 LEXICON Reflexive
 ! %<Refl%>:mo^ VerbBase ;
-%<IndefObjThing%>:tla^   VerbBase
-%<IndefObjPerson%>:te^   VerbBase
+%<IndefObjThing%>:tla^   VerbBase ; 
+%<IndefObjPerson%>:te^   VerbBase ; 
 0:0            VerbBase ;
 
 LEXICON VerbBase
@@ -226,49 +226,49 @@ LEXICON Base3Suffix
 
 
 LEXICON PresentTense
-%<Pres%>@D.PST@:@D.PST@0  # ;
-%<Pres%>@R.PLS@:@R.PLS@PL # ;
+@D.PST@%<Pres%>:@D.PST@0  # ;
+@R.PLS@%<Pres%>:@R.PLS@PL # ;
 
 LEXICON Imperfect
-%<Imp%>@D.PLS@:@D.PLS@ya  # ;
-%<Imp%>@R.PLS@:@R.PLS@yah # ;
+@D.PLS@%<Imp%>:@D.PLS@ya  # ;
+@R.PLS@%<Imp%>:@R.PLS@yah # ;
 
 LEXICON Preterite
-%<Pret%>@D.PLS@:@D.PLS@K  # ;
-%<Pret%>@R.PLS@:@R.PLS@Ke # ;
+@D.PLS@%<Pret%>:@D.PLS@K  # ;
+@R.PLS@%<Pret%>:@R.PLS@Ke # ;
 
 LEXICON Pluperfect
-%<Plup%>@D.PLS@:@D.PLS@Ka   # ;
-%<Plup%>@R.PLS@:@R.PLS@Kah  # ;
+@D.PLS@%<Plup%>:@D.PLS@Ka   # ;
+@R.PLS@%<Plup%>:@R.PLS@Kah  # ;
 
 LEXICON Future
-%<Fut%>@D.PLS@:@D.PLS@z    # ;
-%<Fut%>@R.PLS@:@R.PLS@zque # ;
+@D.PLS@%<Fut%>:@D.PLS@z    # ;
+@R.PLS@%<Fut%>:@R.PLS@zque # ;
 
 LEXICON Counterfactual
-%<Cfact%>@D.PLS@:@D.PLS@zKia # ;
-%<Cfact%>@R.PLS@:@R.PLS@zKiah # ;
+@D.PLS@%<Cfact%>:@D.PLS@zKia # ;
+@R.PLS@%<Cfact%>:@R.PLS@zKiah # ;
 
 LEXICON Optative
 @D.PLS@:@D.PLS@0   # ;
 @R.PLS@:@R.PLS@Kan # ;
 
-Lexicon PerfectiveDirectionalToward
-%<PerfDirTow%>@D.PLS@:@D.PLS@Ko # ;
-%<PerfDirTow%>@R.PLS@:@R.PLS@Koh # ;
+LEXICON PerfectiveDirectionalToward
+@D.PLS@%<PerfDirTow%>:@D.PLS@Ko # ;
+@R.PLS@%<PerfDirTow%>:@R.PLS@Koh # ;
 
-Lexicon ImperfectiveDirectionalToward
-%<ImpDirTow%>@D.PLS@:@D.PLS@Kiuh # ;
-%<ImpDirTow%>@R.PLS@:@R.PLS@Kiuih # ;
+LEXICON ImperfectiveDirectionalToward
+@D.PLS@%<ImpDirTow%>:@D.PLS@Kiuh # ;
+@R.PLS@%<ImpDirTow%>:@R.PLS@Kiuih # ;
 
-Lexicon OptativeDirectonalToward
-%<OptDirTow%>@D.PLS@:@D.PLS@Ki # ;
-%<OptDirTow%>@R.PLS@:@R.PLS@Kih # ;
+LEXICON OptativeDirectonalToward
+@D.PLS@%<OptDirTow%>:@D.PLS@Ki # ;
+@R.PLS@%<OptDirTow%>:@R.PLS@Kih # ;
 
-Lexicon PerfectiveDirectionalAway
-%<PerfDirAwa%>@D.PLS@:@D.PLS@to # ;
-%<PerfDirAwa%>@R.PLS@:@R.PLS@toh # ;
+LEXICON PerfectiveDirectionalAway
+@D.PLS@%<PerfDirAwa%>:@D.PLS@to # ;
+@R.PLS@%<PerfDirAwa%>:@R.PLS@toh # ;
 
-Lexicon ImperfectiveDirectionalAway
-%<ImpDirAwa%>@D.PLS@:@D.PLS@tiuh # ;
-%<ImpDirAwa%>@R.PLS@:@R.PLS@ih # ;
+LEXICON ImperfectiveDirectionalAway
+@D.PLS@%<ImpDirAwa%>:@D.PLS@tiuh # ;
+@R.PLS@%<ImpDirAwa%>:@R.PLS@ih # ;
