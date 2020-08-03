@@ -1,4 +1,5 @@
 Multichar_Symbols
+%<V%>
 %<1SgSubj%>
 %<1PlSubj%>
 %<2SgSubj%>
@@ -11,6 +12,12 @@ Multichar_Symbols
 %<1PlObj%>
 %<2PlObj%>
 %<3PlObj%>
+%<1SgRec%>
+%<2SgRec%>
+%<3SgRec%>
+%<1PlRec%>
+%<2PlRec%>
+%<3PlRec%>
 %<Hon%>
 %<Refl%>
 %<Pres%>
@@ -40,14 +47,17 @@ Multichar_Symbols
 @D.OPT@     !Prohibit Optative
 @P.2P.ON@   !Second Person subj or obj (for proper usage of the honorific)
 @R.2P@      !Require 2nd Person subj or obj
-@P.OINC.ON@ !Verb uses Noun object incorporation.
-@R.OINC@
-@D.OINC@
 @P.MOTION.ON@
 @R.MOTION@
+@P.DITRANS.ON@
+@D.DITRANS@
+@P.OBJFILLED.ON@ !If the object prefix slot is filled, then the indefinite
+                 ! object can only appear when the verb is bitransitive.
+@R.OBJFILLED@
+@D.OBJFILLED@
 
 LEXICON Root
-VerbalNuclearClause ;
+%<V%>:0 VerbalNuclearClause ;
 
 LEXICON VerbalNuclearClause
 @P.PST.ON@:@P.PST.ON@o^ SubjectPrefixes ;  ! past augment
@@ -72,14 +82,14 @@ LEXICON VerbalNuclearClause
 !
 LEXICON SubjectPrefixes
 %<1SgSubj%>:n^                                                ObjectPrefixes ;
-%<2SgSubj%>@P.2P.ON@:@P.2P.ON@t^                              ObjectPrefixes ;
-%<3SgSubj%>:0^                                                ObjectPrefixes ;
-%<1PlSubj%>@P.PLS.ON@:@P.PLS.ON@t^                            ObjectPrefixes ;
-%<1PlSubj%>:ze^                                               ObjectPrefixes ;
-%<2PlSubj%>@P.PLS.ON@:@P.PLS.ON@n^                            ObjectPrefixes ;
-%<3PlSubj%>@P.PLS.ON@:@P.PLS.ON@0^                            ObjectPrefixes ;
-%<Opt%>%<2SgSubj%>@P.OPT.ON@@P.2P.ON@:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
-%<Opt%>%<2PlSubj%>@P.PLS.ON@@P.OPT.ON@:@P.PLS.ON@@P.OPT.ON@x^ ObjectPrefixes ;
+!%<2SgSubj%>@P.2P.ON@:@P.2P.ON@t^                              ObjectPrefixes ;
+!%<3SgSubj%>:0^                                                ObjectPrefixes ;
+!%<1PlSubj%>@P.PLS.ON@:@P.PLS.ON@t^                            ObjectPrefixes ;
+!%<1PlSubj%>:ze^                                               ObjectPrefixes ;
+!%<2PlSubj%>@P.PLS.ON@:@P.PLS.ON@n^                            ObjectPrefixes ;
+!%<3PlSubj%>@P.PLS.ON@:@P.PLS.ON@0^                            ObjectPrefixes ;
+!%<Opt%>%<2SgSubj%>@P.OPT.ON@@P.2P.ON@:@P.OPT.ON@@P.2P.ON@x^   ObjectPrefixes ;
+!%<Opt%>%<2PlSubj%>@P.PLS.ON@@P.OPT.ON@:@P.PLS.ON@@P.OPT.ON@x^ ObjectPrefixes ;
 
 
 
@@ -89,12 +99,24 @@ LEXICON SubjectPrefixes
 !
 LEXICON ObjectPrefixes
 @P.INTR.ON@:@P.INTR.ON@0            HonorificDirectional ;
-%<1SgObj%>:nech^                    HonorificDirectional ;
-%<2SgObj%>@P.2P.ON@:@P.2P.ON@mitz^  HonorificDirectional ;
-%<3SgObj%>:K^                       HonorificDirectional ;
-%<1PlObj%>:tech^                    HonorificDirectional ;
-%<2PlObj%>:mech^                    HonorificDirectional ;
-%<3PlObj%>:Kim^                     HonorificDirectional ;
+0:0                                 HonorificDirectional ;
+!%<1SgObj%>@P.OBJFILLED.ON@:@P.OBJFILLED.ON@nech^                    HonorificDirectional ;
+!%<2SgObj%>@P.2P.ON@@P.OBJFILLED.ON@:@P.2P.ON@@P.OBJFILLED.ON@mitz^  HonorificDirectional ;
+!%<3SgObj%>@P.OBJFILLED.ON@:@P.OBJFILLED.ON@K^                       HonorificDirectional ;
+!%<1PlObj%>@P.OBJFILLED.ON@:@P.OBJFILLED.ON@tech^                    HonorificDirectional ;
+!%<2PlObj%>@P.OBJFILLED.ON@:@P.OBJFILLED.ON@mech^                    HonorificDirectional ;
+!%<3PlObj%>@P.OBJFILLED.ON@:@P.OBJFILLED.ON@Kim^                     HonorificDirectional ;
+
+!%<1SgRec%>:nech^                    DiTransDirObj ;
+!%<2SgRec%>@P.2P.ON@:@P.2P.ON@mitz^  DiTransDirObj ;
+!%<3SgRec%>:K^                       DiTransDirObj ;
+!%<1PlRec%>:tech^                    DiTransDirObj ;
+!%<2PlRec%>:mech^                    DiTransDirObj ;
+!%<3PlRec%>:Kim^                     DiTransDirObj ;
+
+
+!LEXICON DiTransDirObj
+!%<3PlDirObj%>@P.DITRANS.ON@:@P.DITRANS.ON@im^ HonorificDirectional ;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -107,35 +129,34 @@ LEXICON ObjectPrefixes
 ! The 'on-' honorific morpheme also triggers regressive vowel harmony (i -> o).
 !
 LEXICON HonorificDirectional
-%<Hon%>@R.2P@:@R.2P@on^                   Reflexive ;
-%<DirTow%>@R.MOTION@:@R.MOTION@ual^       Reflexive ;
+!%<Hon%>@R.2P@:@R.2P@on^                   Reflexive ;
+!%<DirTow%>@R.MOTION@:@R.MOTION@ual^       Reflexive ;
 0:0                                       Reflexive ;
-
-
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Not every verb can be reflexive, so maybe roll the reflexive prefix into the
 ! verb stem lexical entry?
 !
 LEXICON Reflexive
-! %<Refl%>:mo^ VerbBase ;
-%<IndefObjThing%>:tla^   VerbBase
-%<IndefObjPerson%>:te^   VerbBase
-0:0            VerbBase ;
+!%<Refl%>:mo^ VerbBase ;
+%<IndefObjThing%>@D.INTR@@D.OBJFILLED@:@D.INTR@@D.OBJFILLED@tla^   VerbBase ;
+%<IndefObjPerson%>@D.INTR@@D.OBJFILLED@:@D.INTR@@D.OBJFILLED@te^   VerbBase ;
+!0:0                      VerbBase ;
+
 
 LEXICON VerbBase
 @R.INTR@:@R.INTR@ Intransitive ;
 @D.INTR@:@D.INTR@ Transitive ;
 
 LEXICON Intransitive
-@D.OPT@:@D.OPT@ IntransitiveBase1 ;
+@D.OPT@:@D.OPT@               IntransitiveBase1 ;
 @R.PST@@D.OPT@:@R.PST@@D.OPT@ IntransitiveBase2 ;
 @D.PST@:@D.PST@               IntransitiveBase3 ;
 
 LEXICON Transitive
-@D.OPT@:@D.OPT@ TransitiveBase1 ;
+@D.OPT@:@D.OPT@               TransitiveBase1 ;
 @R.PST@@D.OPT@:@R.PST@@D.OPT@ TransitiveBase2 ;
-TransitiveBase3 ;
+0:0                           TransitiveBase3 ;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -218,15 +239,15 @@ LEXICON Base3Suffix
 @D.OPT@@D.PST@:@D.OPT@@D.PST@ Counterfactual ;
 @R.OPT@@D.PST@:@R.OPT@@D.PST@ Optative ;
 
-@D.OPT@:@D.OPT@ PerfectiveDirectionalToward ;
-@D.OPT@:@D.OPT@ PerfectiveDirectionalAway ;
+@D.OPT@:@D.OPT@               PerfectiveDirectionalToward ;
+@D.OPT@:@D.OPT@               PerfectiveDirectionalAway ;
 @D.OPT@@D.PST@:@D.OPT@@D.PST@ ImperfectiveDirectionalToward ;
 @D.OPT@@D.PST@:@D.OPT@@D.PST@ ImperfectiveDirectionalAway ;
 @R.OPT@@D.PST@:@R.OPT@@D.PST@ OptativeDirectonalToward ;
 
 
 LEXICON PresentTense
-%<Pres%>@D.PST@:@D.PST@0  # ;
+%<Pres%>@D.PST@@D.PLS@:@D.PST@@D.PLS@0  # ;
 %<Pres%>@R.PLS@:@R.PLS@PL # ;
 
 LEXICON Imperfect

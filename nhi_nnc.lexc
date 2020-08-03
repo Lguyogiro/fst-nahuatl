@@ -44,11 +44,11 @@ SubjPrefix ;
 
 LEXICON SubjPrefix
 %<1SgSubj%>:n^ NominalStem ;
-!%<2SgSubj%>:t^ NominalStem ;
-!%<3SgSubj%>:0 NominalStem ;
-!%<1PlSubj%>@P.PL.ON@:@P.PL.ON@t^ NominalStem ;
-!%<2PlSubj%>@P.PL.ON@:@P.PL.ON@n^ NominalStem ;
-!%<3PlSubj%>@P.PL.ON@:@P.PL.ON@0^ NominalStem ;
+%<2SgSubj%>:t^ NominalStem ;
+%<3SgSubj%>:0 NominalStem ;
+%<1PlSubj%>@P.PL.ON@:@P.PL.ON@t^ NominalStem ;
+%<2PlSubj%>@P.PL.ON@:@P.PL.ON@n^ NominalStem ;
+%<3PlSubj%>@P.PL.ON@:@P.PL.ON@0^ NominalStem ;
 
 LEXICON NominalStem
 Stem ;
@@ -56,17 +56,18 @@ Stem ;
 
 
 LEXICON Poss
-!%<Poss1Sg%>:no^ Stem ;
+%<Poss1Sg%>:no^ Stem ;
 %<Poss2Sg%>:mo^ Stem ;
-!%<Poss3Sg%>:i^ Stem ;
-!%<Poss1Pl%>:to^ Stem ;
+%<Poss3Sg%>:i^ Stem ;
+%<Poss1Pl%>:to^ Stem ;
+
 !
 !In San Miguel Tenango, the 2nd person plural possessive prefix is "namo-",
 ! whereas in Omitlan, it appears to be "nimo-".
 !
-!%<Poss2Pl%>:nimo^ Stem ;
+%<Poss2Pl%>:nimo^ Stem ;
 !%<tenango%>%<Poss2Pl%>:namo^ Stem ;
-!%<Poss3Pl%>:im^ Stem ;
+%<Poss3Pl%>:im^ Stem ;
 
 
 LEXICON Stem
@@ -79,7 +80,7 @@ LEXICON Stem
 
 LEXICON TlStem
 amatl:ama^ Suff ;                       !"papel/libro"
-zihuatl:zihua^ Suff ;                    !"woman"
+zihuatl:zihua^ Suff ;                   !"woman"
 oquichtl:oquich^ Suff ;                 !"male"
 tlacatl:tlaca^ Suff ;                   !"man"
 tototl:toto^ Suff ;                     !"pajaro"
@@ -101,16 +102,16 @@ quichconetl:quichcone^ Suff ;           !"male baby"
 coyotl:coyo^ Suff ;                     !"coyote"
 
 ! todo: Figure out how to deal with these slightly different forms.
-xihuitl:xiW^ Suff ;                    !"hierba/year" (noxiuh)
+xihuitl:xiW^  Suff ;                    !"hierba/year" (noxiuh)
 !caxitl: cax^ Suff ;                    !"plato"       (nocax, caxme)
 
 LEXICON TliStem
-tochtli:toch^ Suff;        !"conejo"
+tochtli:toch^       Suff;  !"conejo"
 itzcuintli:itzcuin^ Suff;  !"perro"
-pahtli:pah^ Suff;          !"medicina"
-poctli:poc^ Suff;          !"humo"
-metztli:metz^ Suff;        !"luna"
-mixtli:mix^ Suff           !"nube
+pahtli:pah^         Suff;  !"medicina"
+poctli:poc^         Suff;  !"humo"
+metztli:metz^       Suff;  !"luna"
+mixtli:mix^         Suff   !"nube
 
 
 LEXICON LiStem
@@ -121,10 +122,10 @@ zitlalli:zitlal^ Suff ;
 !
 ! These noun stems are usually animals.
 !
-LEXICON INStem
-chapolin:chapol ;   !"chapulin"
-tamazolin:tamazol ; !"rana"
-ayotachin:ayotoch ; !"armadillo"
+LEXICON InStem
+chapolin:chapol^   Suff ; !"chapulin"
+tamazolin:tamazol^ Suff ; !"rana"
+ayotachin:ayotoch^ Suff ; !"armadillo"
 
 
 LEXICON SuffixlessStem
@@ -138,7 +139,7 @@ tlapitlanil:tlapitlanil^ Suff ; !"rayo"
 
 
 LEXICON Suff
-!0:0 UnpossessedEndings ;
+0:0 UnpossessedEndings ;
 0:0 PossessedEndings ;
 !@C.suff@%#:@C.suff@0 Stem ; ! Compound Nouns
 
@@ -155,13 +156,13 @@ LEXICON UnpossessedEndings
 @R.PL@@D.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@D.suff.li@@D.poss@me # ;
 
 ! Dim.
-!@D.poss@%<N%>:@D.poss@ Diminutive ;
+@D.poss@%<N%>:@D.poss@ Diminutive ;
 
 
 LEXICON PossessedEndings
 @D.PL@@R.poss@%<N%>:@D.PL@@R.poss@0 # ;
 @R.PL@@R.poss@%<N%>%<Pl%>:@R.PL@@R.poss@huan # ;
-!@R.poss@%<N%>:@R.poss@ Diminutive ;
+@R.poss@%<N%>:@R.poss@ Diminutive ;
 
 
 LEXICON Diminutive

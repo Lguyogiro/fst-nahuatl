@@ -1,7 +1,7 @@
 define Cons [b | c | c h | d | f | g | h | j | k | l | m | n | p | q | r | s |
              t | v | x | z | K] ;
-define Vowels [a | e | i | o | u ] ;
 
+define Vowels [a | e | i | o | u ] ;
 
 define NominalFlags ["@U.poss.ON@" | "@R.poss@" | "@D.poss@" |
                      "@U.suff.tl@" | "@U.suff.tli@" | "@U.suff.li@" |
@@ -10,17 +10,25 @@ define NominalFlags ["@U.poss.ON@" | "@R.poss@" | "@D.poss@" |
 
 define SuffixFlags ["@U.suff.li@" | "@U.suff.tli@" | "@U.suff.other@" |
                     "@U.suff.tl@"] ;
+
 define PossFlags [ "@U.poss.ON@" | "@R.poss@" | "D.poss@" ] ;
 
 define AllVerbalFlags ["@P.PST.ON@" | "@R.PST@" | "@D.PST@" | "@P.PLS.ON@" |
                        "@R.PLS@" | "@D.PLS@" | "@P.INTR.ON@" | "@R.INTR@" |
                        "@D.INTR@" | "@P.OPT.ON@" | "@R.OPT@" | "@D.OPT@" |
-                       "@P.2P.ON@" | "@R.2P@" | "@D.2P@" ] ;
+                       "@P.2P.ON@" | "@R.2P@" | "@D.2P@" | "@D.DITRANS@" |
+                       "@P.DITRANS.ON@" | "@P.OBJFILLED.ON@" |
+                       "@R.OBJFILLED@" | "@D.OBJFILLED@"] ;
+
 define AugmentSeq "@P.PST.ON@" o "^" ;
+
 define PreSubjFlags ["@P.PLS.ON@" | "@P.OPT.ON@" | "@P.2P.ON@"] ;
+
 define PreObjFlags ["@P.INTR.ON@" | "@P.2P.ON@"] ;
+
 define PreVerbalFlags ["@R.INTR@" | "@D.INTR@" | "@D.PST@" | "@R.PST@" |
-                       "@D.OPT@"] ;
+                       "@D.OPT@" | "@P.OBJFILLED.ON@" | "@R.OBJFILLED@" |
+                       "@D.OBJFILLED@"] ;
 
 
 !
@@ -39,41 +47,42 @@ define WrewritePt2 W -> h u i || _ NominalFlags* "^" t l .#. ;
 !
 ! VNC Rules
 !
-!define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
-!define ObjIEpenthesis K -> K i || [ .#. | Cons ] PreSubjFlags* "^"* _ "^" PreVerbalFlags* Cons ;
-!define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
-!define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
-!define StoZRewrite s -> z ;
-!define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
-!define PresPluralEndingAfterO P L -> u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
-!define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
-!define PresPluralEnding P L -> 0 || _ .#.;
-!define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
-!define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
-!define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
-!define KtoC K -> c ;
-!define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
+define SubjIEpenthesis n -> n i, t -> t i, x -> x i || [ .#. | Cons | AugmentSeq] PreSubjFlags* _ "^" [PreObjFlags | PreVerbalFlags]* Cons ;
+define ObjIEpenthesis K -> K i || [ .#. | Cons ] PreSubjFlags* "^"* _ "^" PreVerbalFlags* Cons ;
+define HonorificVowelHarmony i -> o || [PreSubjFlags|PreObjFlags]* [n | t | x | m | K] _ ([t z | m]) "^" PreObjFlags* ([K | K i m | K o m]) ("^") "@R.2P@" o n "^" ;
+define KDegemination K -> 0 || [K|c|q] [ AllVerbalFlags | "^" ]* _ ;
+define StoZRewrite s -> z ;
+define PresPluralEndingAfterA P L -> h || a "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+define PresPluralEndingAfterO P L -> u a || o "^" ["@R.PLS@" | "@D.PST@"]* _ .#.;
+define PresPluralEndingAfterE i -> e || _ "^" ["@R.PLS@" | "@D.PST@"]* P L .#.;
+define PresPluralEnding P L -> 0 || _ .#.;
+define NasalAssimilation m -> n || _ "^" AllVerbalFlags* [K|t|n] ;
+define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
+define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
+define KtoC K -> c ;
+define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
+
 define Cleanup "^" -> 0 ;
 
-!read lexc nhi_vnc.lexc
-!define Lexicon;
+read lexc nhi_vnc.lexc
+define Lexicon;
 
-!define Grammar Lexicon                      .o.
-!               SubjIEpenthesis              .o.
-!               ObjIEpenthesis               .o.
-!               HonorificVowelHarmony        .o.
-!               KDegemination                .o.
-!               StoZRewrite                  .o.
-!               PresPluralEndingAfterA       .o.
-!               PresPluralEndingAfterO       .o.
-!               PresPluralEndingAfterE       .o.
-!               PresPluralEnding             .o.
-!               NasalAssimilation            .o.
-!               KElision                     .o.
-!               IhToEPreterite               .o.
-!               KtoQui                       .o.
-!               KtoC                         .o.
-!               Cleanup ;
+define VerbGrammar Lexicon                  .o.
+               SubjIEpenthesis              .o.
+               ObjIEpenthesis               .o.
+               HonorificVowelHarmony        .o.
+               KDegemination                .o.
+               StoZRewrite                  .o.
+               PresPluralEndingAfterA       .o.
+               PresPluralEndingAfterO       .o.
+               PresPluralEndingAfterE       .o.
+               PresPluralEnding             .o.
+               NasalAssimilation            .o.
+               KElision                     .o.
+               IhToEPreterite               .o.
+               KtoQui                       .o.
+               KtoC                         .o.
+               Cleanup ;
 
 
 !
@@ -81,16 +90,19 @@ define Cleanup "^" -> 0 ;
 !
 read lexc nhi_nnc.lexc
 define Lexicon;
-define Grammar Lexicon                     .o.
-               NSubjIEpenthesis             .o.
-               DeleteIAfterReflexiveO      .o.
-               NasalAssimilation           .o.
-               PossessiveNasalAssimilation .o.
-               PossVEnding                 .o.
-               Nelision                    .o.
-               WrewritePt1                 .o.
-               WrewritePt2                 .o.
-               Cleanup ;
+define NounGrammar Lexicon                     .o.
+                   NSubjIEpenthesis            .o.
+                   DeleteIAfterReflexiveO      .o.
+                   NasalAssimilation           .o.
+                   PossessiveNasalAssimilation .o.
+                   PossVEnding                 .o.
+                   Nelision                    .o.
+                   WrewritePt1                 .o.
+                   WrewritePt2                 .o.
+                   Cleanup ;
 
-regex Grammar;
+!define CombinedGrammar VerbGrammar | NounGrammar ;
 
+!regex CombinedGrammar;
+
+regex VerbGrammar ;
