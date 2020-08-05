@@ -18,21 +18,12 @@ Multichar_Symbols
 %<Dim%>
 %<Dim1%>
 %<Dim2%>
-@U.poss.ON@
-
 @P.PL.ON@
 @R.PL@
 @D.PL@
-
-@R.poss@
-@D.poss@
-@U.suff.tl@
-@U.suff.tli@
-@U.suff.li@
-@U.suff.in@
-@U.suff.other@
-@C.suff@
-@D.suff.li@
+@U.POSS.ON@
+@R.POSS@
+@D.POSS@
 
 LEXICON Root
 NominalNuclearClause ;
@@ -43,129 +34,136 @@ LEXICON NominalNuclearClause
 SubjPrefix ;
 
 LEXICON SubjPrefix
-%<1SgSubj%>:n^ NominalStem ;
-%<2SgSubj%>:t^ NominalStem ;
+!%<1SgSubj%>:n^ NominalStem ;
+!%<2SgSubj%>:t^ NominalStem ;
 %<3SgSubj%>:0 NominalStem ;
-%<1PlSubj%>@P.PL.ON@:@P.PL.ON@t^ NominalStem ;
-%<2PlSubj%>@P.PL.ON@:@P.PL.ON@n^ NominalStem ;
+!%<1PlSubj%>@P.PL.ON@:@P.PL.ON@t^ NominalStem ;
+!%<2PlSubj%>@P.PL.ON@:@P.PL.ON@n^ NominalStem ;
 %<3PlSubj%>@P.PL.ON@:@P.PL.ON@0^ NominalStem ;
 
 LEXICON NominalStem
-Stem ;
-@U.poss.ON@:@U.poss.ON@ Poss ;
+NounStem ;
+@U.POSS.ON@:@U.POSS.ON@ Poss ;
 
 
 LEXICON Poss
-%<Poss1Sg%>:no^ Stem ;
-%<Poss2Sg%>:mo^ Stem ;
-%<Poss3Sg%>:i^ Stem ;
-%<Poss1Pl%>:to^ Stem ;
+%<Poss1Sg%>:no^ NounStem ;
+%<Poss2Sg%>:mo^ NounStem ;
+%<Poss3Sg%>:i^  NounStem ;
+%<Poss1Pl%>:to^ NounStem ;
 
 !
 !In San Miguel Tenango, the 2nd person plural possessive prefix is "namo-",
 ! whereas in Omitlan, it appears to be "nimo-".
 !
-%<Poss2Pl%>:nimo^ Stem ;
-!%<tenango%>%<Poss2Pl%>:namo^ Stem ;
-%<Poss3Pl%>:im^ Stem ;
+%<Poss2Pl%>:nimo^ NounStem ;
+!%<tenango%>%<Poss2Pl%>:namo^ NounStem ;
+%<Poss3Pl%>:im^ NounStem ;
 
 
-LEXICON Stem
-@U.suff.tl@:@U.suff.tl@ TlStem ;
-@U.suff.tli@:@U.suff.tli@ TliStem ;
-@U.suff.li@:@U.suff.li@ LiStem ;
-@U.suff.in@:@U.suff.in@ InStem ;
-@U.suff.other@:@U.suff.other@ SuffixlessStem ;
+LEXICON NounStem
+TlStem ;
+TliStem ;
+!LiStem ;
+!InStem ;
+!PlainStem ;
 
 
 LEXICON TlStem
-amatl:ama^ Suff ;                       !"papel/libro"
-zihuatl:zihua^ Suff ;                   !"woman"
-oquichtl:oquich^ Suff ;                 !"male"
-tlacatl:tlaca^ Suff ;                   !"man"
-tototl:toto^ Suff ;                     !"pajaro"
-ihuitl:ihui^ Suff ;                     !"gallina"
-tipetl:tipe^ Suff ;                     !"cerro"
-cacalotl:cacalo^ Suff ;                 !"cuervo"
-tapalcatihuilotl:tapalcatihuilo^ Suff ; !"contenedor de agua"
-tiquitl:tiqui^ Suff ;                   !"trabajo"
-tlaltitl:tlalti^ Suff ;                 !"earth rock"
-atl:a^ Suff ;                           !"agua"
-nacatl:naca^ Suff ;                     !"carne"
-ichcatl:ichca^ Suff ;                   !"borrego"
-tipoztl:tipoz^ Suff ;                   !"carro/algo metalico"
-yolotl:yolo^ Suff ;                     !"corazon"
-conetl:cone^ Suff ;                     !"bebe"
-cozamalotl:cozamalo^ Suff ;             !"arcoiris"
-ichpocaconetl:ichpocacone^ Suff ;       !"girl baby"
-quichconetl:quichcone^ Suff ;           !"male baby"
-coyotl:coyo^ Suff ;                     !"coyote"
+!amatl:ama^                       TlSuffixes ; !"papel/libro"
+!zihuatl:zihua^                   TlSuffixes ; !"mujer"
+!oquichtl:oquich^                 TlSuffixes ; !"varón"
+!tlacatl:tlaca^                   TlSuffixes ; !"hombre"
+!tototl:toto^                     TlSuffixes ; !"pajaro"
+!ihuitl:ihui^                     TlSuffixes ; !"gallina"
+!tipetl:tipe^                     TlSuffixes ; !"cerro"
+!cacalotl:cacalo^                 TlSuffixes ; !"cuervo"
+!tapalcatihuilotl:tapalcatihuilo^ TlSuffixes ; !"contenedor de agua"
+!tiquitl:tiqui^                   TlSuffixes ; !"trabajo"
+!tlaltitl:tlalti^                 TlSuffixes ; !"piedra de tierra"
+atl:a^                           TlSuffixes ; !"agua"
+!nacatl:naca^                     TlSuffixes ; !"carne"
+!ichcatl:ichca^                   TlSuffixes ; !"borrego"
+!tipoztl:tipoz^                   TlSuffixes ; !"carro/algo metalico"
+!yolotl:yolo^                     TlSuffixes ; !"corazon"
+conetl:cone^                     TlSuffixes ; !"bebé"
+!cozamalotl:cozamalo^             TlSuffixes ; !"arcoiris"
+!ichpocaconetl:ichpocacone^       TlSuffixes ; !"niña"
+!quichconetl:quichcone^           TlSuffixes ; !"niño"
+!coyotl:coyo^                     TlSuffixes ; !"coyote"
 
 ! todo: Figure out how to deal with these slightly different forms.
-xihuitl:xiW^  Suff ;                    !"hierba/year" (noxiuh)
-!caxitl: cax^ Suff ;                    !"plato"       (nocax, caxme)
+!xihuitl:xiW^  TlSuffixes ;                    !"hierba/year" (noxiuh)
+!caxitl: cax^ TlSuffixes ;                    !"plato"       (nocax, caxme)
 
 LEXICON TliStem
-tochtli:toch^       Suff;  !"conejo"
-itzcuintli:itzcuin^ Suff;  !"perro"
-pahtli:pah^         Suff;  !"medicina"
-poctli:poc^         Suff;  !"humo"
-metztli:metz^       Suff;  !"luna"
-mixtli:mix^         Suff   !"nube
-
+!tochtli:toch^       TliSuffixes;  !"conejo"
+itzcuintli:itzcuin^  TliSuffixes;  !"perro"
+!pahtli:pah^         TliSuffixes;  !"medicina"
+!poctli:poc^         TliSuffixes;  !"humo"
+!metztli:metz^       TliSuffixes;  !"luna"
+!mixtli:mix^         TliSuffixes   !"nube
 
 LEXICON LiStem
-calli:cal^ Suff ;
-zitlalli:zitlal^ Suff ;
+calli:cal^       LiSuffixes ;
+zitlalli:zitlal^ LiSuffixes ;
 
 
-!
-! These noun stems are usually animals.
-!
 LEXICON InStem
-chapolin:chapol^   Suff ; !"chapulin"
-tamazolin:tamazol^ Suff ; !"rana"
-ayotachin:ayotoch^ Suff ; !"armadillo"
+chapolin:chapol   InSuffixes ; !"chapulín"
+tamazolin:tamazol InSuffixes ; !"rana"
+ayotachin:ayotoch InSuffixes ; !"armadillo"
 
 
-LEXICON SuffixlessStem
-tempil:tempil^ Suff ;           !"pico"
-mahtlapal:mahtlapal^ Suff ;     !"ala"
-tonal:tonal^ Suff ;             !"day/sun"
-caxtil:caxtil^ Suff ;           !"gallina"
-patox:patox^ Suff ;             !"pato"
-ixtololo:ixtololo^ Suff ;       !"ojo"
-tlapitlanil:tlapitlanil^ Suff ; !"rayo"
+LEXICON PlainStem
+tempil:tempil^           PlainStemSuffixes ; !"pico"
+mahtlapal:mahtlapal^     PlainStemSuffixes ; !"ala"
+tonal:tonal^             PlainStemSuffixes ; !"day/sun"
+caxtil:caxtil^           PlainStemSuffixes ; !"gallina"
+patox:patox^             PlainStemSuffixes ; !"pato"
+ixtololo:ixtololo^       PlainStemSuffixes ; !"ojo"
+tlapitlanil:tlapitlanil^ PlainStemSuffixes ; !"rayo"
 
 
-LEXICON Suff
-0:0 UnpossessedEndings ;
-0:0 PossessedEndings ;
-!@C.suff@%#:@C.suff@0 Stem ; ! Compound Nouns
+LEXICON TlSuffixes
+@D.PL@@D.POSS@%<N%>%<Abs%>:@D.PL@@D.POSS@tl # ;
+0:0 CommonUnpossessedPluralSuffix ;
+0:0 CommonPossessedSuffixes ;
+0:0 Diminutives ;
 
-LEXICON UnpossessedEndings
-! Singulars
-@D.PL@@U.suff.other@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.other@@D.poss@ # ;
-@D.PL@@U.suff.li@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.li@@D.poss@li # ;
-@D.PL@@U.suff.tl@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tl@@D.poss@tl # ;
-@D.PL@@U.suff.tli@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.tli@@D.poss@tli # ;
-@D.PL@@U.suff.in@@D.poss@%<N%>%<Abs%>:@D.PL@@U.suff.in@@D.poss@in # ;
+LEXICON TliSuffixes
+@D.PL@@D.POSS@%<N%>%<Abs%>:@D.PL@@D.POSS@tli # ;
+CommonUnpossessedPluralSuffix ;
+CommonPossessedSuffixes ;
+Diminutives ;
 
-! Plurals
-@R.PL@@U.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@U.suff.li@@D.poss@lime # ;
-@R.PL@@D.suff.li@@D.poss@%<N%>%<Pl%>:@R.PL@@D.suff.li@@D.poss@me # ;
+LEXICON LiSuffixes
+@D.PL@@D.POSS@%<N%>%<Abs%>:@D.PL@@D.POSS@li # ;
+@R.PL@@D.POSS@%<N%>%<Pl%>:@R.PL@@D.POSS@lime # ;
+CommonPossessedSuffixes ;
+Diminutives ;
 
-! Dim.
-@D.poss@%<N%>:@D.poss@ Diminutive ;
+LEXICON InSuffixes
+@D.PL@@D.POSS@%<N%>%<Abs%>:@D.PL@@D.POSS@in # ;
+CommonUnpossessedPluralSuffix ;
+CommonPossessedSuffixes ;
+Diminutives ;
 
+LEXICON PlainStemSuffixes
+@D.PL@@D.POSS@%<N%>%<Abs%>:@D.PL@@D.POSS@0 # ;
+CommonUnpossessedPluralSuffix ;
+CommonPossessedSuffixes ;
+Diminutives ;
 
-LEXICON PossessedEndings
-@D.PL@@R.poss@%<N%>:@D.PL@@R.poss@0 # ;
-@R.PL@@R.poss@%<N%>%<Pl%>:@R.PL@@R.poss@huan # ;
-@R.poss@%<N%>:@R.poss@ Diminutive ;
+LEXICON CommonUnpossessedPluralSuffix
+@R.PL@@D.POSS@%<N%>%<Pl%>:@R.PL@@D.POSS@me # ;
 
+LEXICON CommonPossessedSuffixes
+@D.PL@@R.POSS@%<N%>:@D.PL@@R.POSS@uh # ;
+@R.PL@@R.POSS@%<N%>%<Pl%>:@R.PL@@R.POSS@huan # ;
 
-LEXICON Diminutive
-%<Dim1%>@D.PL@:@D.PL@^tzin # ;
-%<Dim2%>@D.PL@:@D.PL@^tzintli # ;
-%<Pl%>%<Dim%>@R.PL@:@R.PL@^tzitzin # ;
+LEXICON Diminutives
+@D.PL@%<N%>%<Dim1%>:@D.PL@^tzi # ;
+@D.PL@%<N%>%<Dim2%>:@D.PL@^tzintli # ;
+@R.PL@%<N%>%<Pl%>%<Dim%>:@R.PL@^tzitzi # ;
+

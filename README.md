@@ -32,7 +32,7 @@ The following is a list of resources (grammars, books/transcripts, papers, etc) 
 - [x] Diminutive Suffixes
 - [x] Noun Compounding
 - [ ] Adj-Noun Compoundinig
-- [ ] Subject prefixes ('n-', 't-', etc)
+- [x] Subject prefixes ('n-', 't-', etc)
 
 #### VNCs
 - [x] Standard Subject Prefixes

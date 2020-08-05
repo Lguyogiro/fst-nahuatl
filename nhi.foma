@@ -34,15 +34,12 @@ define PreVerbalFlags ["@R.INTR@" | "@D.INTR@" | "@D.PST@" | "@R.PST@" |
 !
 ! NNC Rules
 !
-define NSubjIEpenthesis n -> n i, t -> t i ||.#. ("@P.PL.ON@") _ "^" ["@U.poss.ON@"|SuffixFlags]* Cons ;
-define NasalAssimilation n -> 0 || _ SuffixFlags "@U.pos.OFF@" "^" m ;
-define DeleteIAfterReflexiveO i -> 0 || o "^" SuffixFlags _ Cons Cons ;
-define Nelision n -> 0 || _ "@R.poss@" "^" h u a n ;
-define PossessiveNasalAssimilation m -> n || "@U.poss.ON@" i _ "^" SuffixFlags [c | t | n | s | y] ;
-define PossVEnding a -> a u h, o -> o u h, i -> i u h, e -> e u h || _ "^" ("@D.PL@") PossFlags .#. ;
-!xi                             W @D.PL@@R.poss@
-define WrewritePt1 W -> u h  || Vowels* _ "^" NominalFlags* .#. ;
-define WrewritePt2 W -> h u i || _ NominalFlags* "^" t l .#. ;
+define NSubjIEpenthesis n -> n i, t -> t i ||.#. _ "^" Cons ;
+define NasalAssimilation1 n -> 0 || _ "^" m ;
+define DeleteIAfterReflexiveO i -> 0 || o "^" _ Cons Cons ;
+define NasalAssimilation2 m -> n || i _ "^" [c | t | n | s | y] ;
+define Nelision n -> 0 || _ "^" h u a n ;
+define PossVEnding u h -> 0 || Cons "^" _ .#. ;
 
 !
 ! VNC Rules
@@ -61,7 +58,6 @@ define KElision K -> 0 || Cons "^" AllVerbalFlags* _ .#. ;
 define KtoQui K -> q u || _  ("^") AllVerbalFlags* [i|e] ;
 define KtoC K -> c ;
 define IhToEPreterite i h -> e || _ "^" AllVerbalFlags* .#. ;
-
 define Cleanup "^" -> 0 ;
 
 read lexc nhi_vnc.lexc
@@ -93,16 +89,15 @@ define Lexicon;
 define NounGrammar Lexicon                     .o.
                    NSubjIEpenthesis            .o.
                    DeleteIAfterReflexiveO      .o.
-                   NasalAssimilation           .o.
+                   NasalAssimilation1          .o.
+                   NasalAssimilation2          .o.
                    PossessiveNasalAssimilation .o.
                    PossVEnding                 .o.
                    Nelision                    .o.
-                   WrewritePt1                 .o.
-                   WrewritePt2                 .o.
                    Cleanup ;
 
 !define CombinedGrammar VerbGrammar | NounGrammar ;
 
 !regex CombinedGrammar;
 
-regex VerbGrammar ;
+regex NounGrammar ;
