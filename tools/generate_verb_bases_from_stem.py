@@ -4,8 +4,8 @@ import re
 class VerbalStem(object):
     def __init__(self, stem, transitive=False, es=False):
         self.stem = stem
-        self.vowels = ["ui", "ua", "a", "e", "i", "o", "u"]
-        self.cons = ["p", "t", "c", "m", "n", "z", "x"]
+        self.vowels = ["a", "e", "i", "o", "u"]
+        self.cons = "bcdfghjklmnpqrstvwxz"
         self.multi_char_cons = ["ch", "tl", "tz"]
         self.numVPattern = re.compile("|".join(self.vowels))
         self.n_syl = self.count_syllables()
@@ -13,11 +13,43 @@ class VerbalStem(object):
         self.trans = transitive
 
     def count_syllables(self):
-        return len(re.sub(self.numVPattern, 'V', self.stem))
+        num_syl = 0
+        search_stem = self.stem
+
+        def find_next_vowel(s):
+            print("Start: {}".format(s))
+            for i, ch in enumerate(s):
+                next_ch = s[i + 1] if i+1 < len(s) else ''
+
+                if ch in self.vowels:
+                    vowlen = 1
+                    if ch == 'u' and next_ch in 'iae':
+                        vowlen += 1
+                    char_incr = i + vowlen
+                    if char_incr <= len(s):
+                        return s[char_incr:]
+                    else:
+                        return ''
+            else:
+                return None
+
+        while True:
+            search_stem = find_next_vowel(search_stem)
+            if search_stem is not None:
+                num_syl += 1
+            else:
+                return max([1, num_syl])
 
     @property
-    def base1(self) -> str:
+    def present(self) -> str:
         return self.stem
+
+    @property
+    def imperfect(self):
+        if self.stem.endswith('ia'):
+            return self.stem[:-2] + "a"
+        else:
+            return self.present
 
     @property
     def base2(self) -> str:
@@ -28,14 +60,25 @@ class VerbalStem(object):
             else:
                 #
                 # for '-i' verbs, the vowel lengthens here, but since neither
-                # IDIEZ orthography doesn't represent vowel length, this is
-                # just an
-                # identity.
+                # IDIEZ nor SEP orthographies doesn't represent vowel length,
+                # this is just an identity.
                 #
                 return self.stem
 
-        elif self.stem[-2:] in ('ia', 'oa'):
-            return "{}h".format(self.stem[:-1])
+        elif self.stem.endswith('ia'):
+            #
+            # In Classical Nahuatl, this verbs' base 2 stem would end in 'ih'.
+            # In nhi the preterite they go from "...ih#" -> "...e#". I use
+            # the multichar symbols {i} and {H} in order to enable this
+            # phonological process.
+            #
+            return format(self.stem[:-2]) + "%{i%}%{H%}"
+
+        elif self.stem.endswith('oa'):
+            return self.stem[:-1] + "h"
+
+        elif self.stem.endswith('ca'):
+            return self.stem
 
         elif self.stem.endswith('hua'):
             if self.trans:
@@ -45,6 +88,7 @@ class VerbalStem(object):
                     return self.stem[:-3]
             else:
                 return self.stem
+
         elif self.stem[-2:] in ('ma', 'mi'):
             return "{}n".format(self.stem[:-2])
 
@@ -66,9 +110,13 @@ class VerbalStem(object):
             return self.stem
 
     @property
-    def base3(self, stem):
-        raise NotImplementedError
+    def base3(self):
+        if self.stem[-2:] in ('oa', 'ia'):
+            return self.stem[:-1]
+        else:
+            return self.stem
 
-    @property
-    def base4(self, stem):
-        raise NotImplementedError
+
+def generate_stems(canonical):
+    stem = VerbalStem(canonical)
+    return [stem.present, stem.imperfect, stem.base2, stem.base3]
