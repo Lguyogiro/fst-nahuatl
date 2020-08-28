@@ -17,7 +17,6 @@ class VerbalStem(object):
         search_stem = self.stem
 
         def find_next_vowel(s):
-            print("Start: {}".format(s))
             for i, ch in enumerate(s):
                 next_ch = s[i + 1] if i+1 < len(s) else ''
 
@@ -117,6 +116,20 @@ class VerbalStem(object):
             return self.stem
 
 
-def generate_stems(canonical):
+def generate_stem_lexical_entries(canonical, transitivity='iv'):
+    if transitivity not in ('iv', 'tv', 'tv2'):
+        raise KeyError("`transitivity` must be either iv (intransitive), tv "
+                       "(transitive), or tv2 (bitransitive)")
+
     stem = VerbalStem(canonical)
-    return [stem.present, stem.imperfect, stem.base2, stem.base3]
+    all_stems = [stem.present, stem.imperfect, stem.base2, stem.base3]
+    cont_lexicons = ["PresentTense", "Imperfect", "Base2Suffixes", "Base3Suffixes"]
+
+    lexical_entries = [
+        "{}%<v%>%<{}%>:{}%>  {};".format(canonical,
+                                         transitivity,
+                                         stem,
+                                         cont_lexicons[i])
+        for i, stem in enumerate(all_stems)
+    ]
+    return lexical_entries
